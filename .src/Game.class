@@ -1,0 +1,502 @@
+' Gambas class file
+
+
+Public tabuleiro As New String[3, 3]    
+Public turn As Integer ' IF 10 > turn player 1 | IF 20 turn player 2
+Public simbol As String ' X as Player 1  | O as Player 2
+Public scorep1 As Integer
+Public scorep2 As Integer
+Public scorep3 As Integer
+Public anychampion As Boolean
+
+
+
+Public Sub Form_Open()
+turn = 20
+whoplayer.Text = "PLAYER 1"
+scorep1 = 0
+scorep2 = 0
+scorep3 = 0
+anychampion = False
+
+
+End
+
+
+
+
+
+
+
+
+Public Sub tabuprint()
+
+
+ tabuleiro[0, 0] = 1
+
+ tabuleiro[0, 1] = 2
+
+ tabuleiro[0, 2] = 3
+
+
+
+ tabuleiro[1, 0] = 1
+
+ tabuleiro[1, 1] = 2
+
+ tabuleiro[1, 2] = 3
+
+
+
+ tabuleiro[2, 0] = 1
+
+ tabuleiro[2, 1] = 2
+
+ tabuleiro[2, 2] = 3
+
+atualizador
+Print "----------------"
+Dim v As Integer
+Dim h As Integer
+v = 0
+h = 0
+
+
+
+Repeat
+  v = 0
+  Repeat
+  Print tabuleiro[h, v]
+  v = v + 1
+  
+  Until v = 3
+  
+
+
+   h = h + 1 
+
+Until h = 3
+
+  
+
+
+End
+
+
+
+
+Public Sub atualizador()
+
+If turn = 10
+
+simbol = "O"
+whoplayer.Text = "PLAYER 1"
+
+
+Else
+
+simbol = "X"
+whoplayer.Text = "PLAYER 2"
+
+  
+  Endif
+
+'bnt1.Text = tabuleiro[0, 0]
+  
+ 'bnt2.Text = tabuleiro[0, 1]
+  
+ 'bnt3.Text = tabuleiro[0, 2]
+  
+ 'bnt4.Text = tabuleiro[1, 0]
+  
+ 'bnt5.Text = tabuleiro[1, 1]
+  
+' bnt6.Text = tabuleiro[1, 2]
+  
+ 'bnt7.Text = tabuleiro[2, 0]
+  
+' bnt8.Text = tabuleiro[2, 1]
+  
+' bnt9.Text = tabuleiro[2, 2]
+ 
+ 
+  
+  
+  
+End
+
+
+Public Sub playdef()
+  
+  
+If turn = 10 Then
+
+turn = 20
+
+Else
+
+
+turn = 10
+
+Endif
+  
+  
+  logica
+End
+
+
+
+
+Public Sub bnt1_Click()
+
+  atualizador
+  bnt1.Text = simbol
+  tabuleiro[0, 0] = (bnt1.Text)
+  playdef
+  bnt1.Enabled = False
+
+End
+
+Public Sub bnt2_Click()
+
+  atualizador
+  bnt2.Text = simbol
+  tabuleiro[0, 1] = (bnt2.Text)
+  playdef
+  bnt2.Enabled = False
+  
+  End
+
+Public Sub bnt3_Click()
+
+  
+  atualizador
+  bnt3.Text = simbol
+  tabuleiro[0, 2] = (bnt3.Text)
+  playdef
+  bnt3.Enabled = False
+
+
+End
+
+Public Sub bnt4_Click()
+
+  
+  atualizador
+  bnt4.Text = simbol
+  tabuleiro[1, 0] = (bnt4.Text)
+  playdef
+  bnt4.Enabled = False
+
+End
+
+Public Sub bnt5_Click()
+
+  
+  atualizador
+  bnt5.Text = simbol
+  tabuleiro[1, 1] = (bnt5.Text)
+  playdef
+  bnt5.Enabled = False
+
+End
+
+Public Sub bnt6_Click()
+
+  
+  atualizador
+  bnt6.Text = simbol
+  tabuleiro[1, 2] = (bnt6.Text)
+  playdef
+  bnt6.Enabled = False
+
+End
+
+Public Sub bnt7_Click()
+
+  
+  atualizador
+  bnt7.Text = simbol
+  tabuleiro[2, 0] = (bnt7.Text)
+  playdef
+  bnt7.Enabled = False
+
+End
+
+Public Sub bnt8_Click()
+
+  
+  atualizador
+  bnt8.Text = simbol
+  tabuleiro[2, 1] = (bnt8.Text)
+  playdef
+  bnt8.Enabled = False
+
+End
+
+Public Sub bnt9_Click()
+
+  
+  atualizador
+  bnt9.Text = simbol
+  tabuleiro[2, 2] = (bnt9.Text)
+  playdef
+  bnt9.Enabled = False
+
+End
+
+Public Sub ng_Click()
+Dim v As Integer
+Dim h As Integer
+v = 0
+h = 0
+
+
+turn = 20
+whoplayer.Text = "PLAYER 1"
+
+
+
+
+
+' comeco Z E R A N D O V A R I A V E I S
+
+
+Repeat
+  v = 0
+  Repeat
+     tabuleiro[h, v] = 0
+     v = v + 1
+  
+       Until v > 2
+
+   h = h + 1 
+
+Until h > 2
+
+  
+' fim Z E R A N D O V A R I A V E I S
+
+
+
+
+bnt1.Text = ""
+bnt2.Text = ""
+bnt3.Text = ""
+bnt4.Text = ""
+bnt5.Text = ""
+bnt6.Text = ""
+bnt7.Text = ""
+bnt8.Text = ""
+bnt9.Text = ""
+
+
+bnt1.Enabled = True
+bnt2.Enabled = True
+bnt3.Enabled = True
+bnt4.Enabled = True
+bnt5.Enabled = True
+bnt6.Enabled = True
+bnt7.Enabled = True
+bnt8.Enabled = True
+bnt9.Enabled = True
+
+anychampion = False
+End
+
+
+
+Public Sub logica()
+  logiplayer1
+  logiplayer2
+
+End
+
+Public Sub logiplayer1()
+  
+  If tabuleiro[0, 0] = "X" And tabuleiro[0, 1] = "X" And tabuleiro[0, 2] = "X" Then
+    scorep1 = scorep1 + 1
+    sco1.Text = CString(scorep1)
+    Message("PLAYER 1 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+  
+    
+  If tabuleiro[0, 0] = "X" And tabuleiro[1, 1] = "X" And tabuleiro[2, 2] = "X" Then
+    scorep1 = scorep1 + 1
+    sco1.Text = CString(scorep1)
+    Message("PLAYER 1 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+  
+    
+    
+  If tabuleiro[0, 0] = "X" And tabuleiro[1, 0] = "X" And tabuleiro[2, 0] = "X" Then
+    scorep1 = scorep1 + 1
+    sco1.Text = CString(scorep1)
+    Message("PLAYER 1 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+    
+    
+    
+  If tabuleiro[0, 2] = "X" And tabuleiro[1, 2] = "X" And tabuleiro[2, 2] = "X" Then
+    scorep1 = scorep1 + 1
+    sco1.Text = CString(scorep1)
+    Message("PLAYER 1 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+      
+    
+    
+  If tabuleiro[1, 0] = "X" And tabuleiro[1, 1] = "X" And tabuleiro[1, 2] = "X" Then
+    scorep1 = scorep1 + 1
+    sco1.Text = CString(scorep1)
+    Message("PLAYER 1 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+      
+  If tabuleiro[2, 0] = "X" And tabuleiro[2, 1] = "X" And tabuleiro[2, 2] = "X" Then
+    scorep1 = scorep1 + 1
+    sco1.Text = CString(scorep1)
+    Message("PLAYER 1 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+  
+    
+      
+  If tabuleiro[2, 0] = "X" And tabuleiro[1, 1] = "X" And tabuleiro[0, 2] = "X" Then
+    scorep1 = scorep1 + 1
+    sco1.Text = CString(scorep1)
+    Message("PLAYER 1 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+    
+  
+  
+End
+
+
+
+
+
+
+Public Sub logiplayer2()
+  
+  If tabuleiro[0, 0] = "O" And tabuleiro[0, 1] = "O" And tabuleiro[0, 2] = "O" Then
+    scorep2 = scorep2 + 1
+    sco2.Text = CString(scorep2)
+    Message("PLAYER 2 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+  
+    
+  If tabuleiro[0, 0] = "O" And tabuleiro[1, 1] = "O" And tabuleiro[2, 2] = "O" Then
+    scorep2 = scorep2 + 1
+    sco2.Text = CString(scorep2)
+    Message("PLAYER 2 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+  
+    
+    
+  If tabuleiro[0, 0] = "O" And tabuleiro[1, 0] = "O" And tabuleiro[2, 0] = "O" Then
+    scorep2 = scorep2 + 1
+    sco2.Text = CString(scorep2)
+    Message("PLAYER 2 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+    
+    
+    
+  If tabuleiro[0, 2] = "O" And tabuleiro[1, 2] = "O" And tabuleiro[2, 2] = "O" Then
+    scorep2 = scorep2 + 1
+    sco2.Text = CString(scorep2)
+    Message("PLAYER 2 WINS!")
+    bloqueador
+  Endif
+      
+    
+    
+  If tabuleiro[1, 0] = "O" And tabuleiro[1, 1] = "O" And tabuleiro[1, 2] = "O" Then
+    scorep2 = scorep2 + 1
+    sco2.Text = CString(scorep2)
+    Message("PLAYER 2 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+      
+  If tabuleiro[2, 0] = "O" And tabuleiro[2, 1] = "O" And tabuleiro[2, 2] = "O" Then
+    scorep2 = scorep2 + 1
+    sco2.Text = CString(scorep2)
+    Message("PLAYER 2 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+    
+    
+      
+  If tabuleiro[2, 0] = "O" And tabuleiro[1, 1] = "O" And tabuleiro[0, 2] = "O" Then
+    scorep2 = scorep2 + 1
+    sco2.Text = CString(scorep2)
+    Message("PLAYER 2 WINS!")
+    anychampion = True
+    bloqueador
+  Endif
+  
+
+
+If anychampion = False Then
+  
+        
+  If bnt1.Text <> "" And bnt2.Text <> "" And bnt3.Text <> "" And bnt4.Text <> "" And bnt5.Text <> "" And bnt6.Text <> "" And bnt7.Text <> "" And bnt8.Text <> "" And bnt9.Text <> "" Then
+    scorep3 = scorep3 + 1
+    sco3.Text = CString(scorep3)
+    Message("N O B O D Y!")
+    bloqueador
+  Endif
+  
+  
+  
+Endif
+  
+End
+
+
+Public Sub bloqueador()
+
+bnt1.Enabled = False
+bnt2.Enabled = False
+bnt3.Enabled = False
+bnt4.Enabled = False
+bnt5.Enabled = False
+bnt6.Enabled = False
+bnt7.Enabled = False
+bnt8.Enabled = False
+bnt9.Enabled = False
+  
+End
+
+
+

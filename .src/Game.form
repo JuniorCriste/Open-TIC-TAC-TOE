@@ -1,0 +1,105 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,89,70)
+  Text = ("TIK TAK TOE")
+  Icon = Picture["assets/back_icon.png"]
+  Resizable = False
+  { fndext PictureBox
+    MoveScaled(69,-1,26,72)
+    Picture = Picture["assets/extensionback.png"]
+  }
+  { fnd PictureBox
+    MoveScaled(-2,-1,76,75)
+    Picture = Picture["assets/back.png"]
+  }
+  { bnt1 ToolButton
+    MoveScaled(-1,0,20,21)
+    Font = Font["Geometos,+5"]
+  }
+  { bnt2 ToolButton
+    MoveScaled(25,0,17,21)
+    Font = Font["Geometos,+5"]
+  }
+  { bnt3 ToolButton
+    MoveScaled(48,0,22,21)
+    Font = Font["Geometos,+5"]
+  }
+  { bnt4 ToolButton
+    MoveScaled(0,27,19,16)
+    Font = Font["Geometos,+5"]
+  }
+  { bnt5 ToolButton
+    MoveScaled(25,27,17,15)
+    Font = Font["Geometos,+5"]
+  }
+  { bnt6 ToolButton
+    MoveScaled(48,27,21,15)
+    Font = Font["Geometos,+5"]
+  }
+  { bnt7 ToolButton
+    MoveScaled(-1,48,20,23)
+    Font = Font["Geometos,+5"]
+  }
+  { bnt8 ToolButton
+    MoveScaled(25,48,17,24)
+    Font = Font["Geometos,+5"]
+  }
+  { bnt9 ToolButton
+    MoveScaled(47,49,22,22)
+    Font = Font["Geometos,+5"]
+  }
+  { ng ToolButton
+    MoveScaled(73,60,13,7)
+    Foreground = &H808080&
+    Text = ("NEW GAME")
+  }
+  { whoplayer Label
+    MoveScaled(72,1,16,7)
+    Font = Font["Geometos,+2"]
+    Foreground = &H600B60&
+    Text = ("PLAYER who?")
+  }
+  { sco2 Label
+    MoveScaled(70,36,19,7)
+    Font = Font["Geometos,+2"]
+    Foreground = &H006018&
+    Text = ("0")
+    Alignment = Align.Center
+  }
+  { sco1 Label
+    MoveScaled(70,22,19,7)
+    Font = Font["Geometos,+2"]
+    Foreground = &H006018&
+    Text = ("0")
+    Alignment = Align.Center
+  }
+  { infp1 Label
+    MoveScaled(70,19,19,5)
+    Font = Font["Geometos,+2"]
+    Foreground = &H536056&
+    Text = ("score\nPLAYER 1")
+    Alignment = Align.Center
+  }
+  { infp2 Label
+    MoveScaled(70,33,19,5)
+    Font = Font["Geometos,+2"]
+    Foreground = &H536056&
+    Text = ("score\nPLAYER 2")
+    Alignment = Align.Center
+  }
+  { infp3 Label
+    MoveScaled(70,47,19,5)
+    Font = Font["Geometos,+2"]
+    Foreground = &H536056&
+    Text = ("NOBODY")
+    Alignment = Align.Center
+  }
+  { sco3 Label
+    MoveScaled(70,49,19,7)
+    Font = Font["Geometos,+2"]
+    Foreground = &H006018&
+    Text = ("0")
+    Alignment = Align.Center
+  }
+}

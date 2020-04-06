@@ -1,0 +1,12 @@
+# Gambas Project File 3.0
+Title=Simples Tik Tak Toe
+Startup=Game
+Icon=assets/back_icon.png
+Version=0.0.1
+Component=gb.image
+Component=gb.gui
+Component=gb.form
+TabSize=2
+Language=en_US
+Vendor=JuniorCriste
+Packager=1
