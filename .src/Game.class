@@ -1,6 +1,13 @@
 ' Gambas class file
 
 
+
+' Static Function Load(Path As String)
+  'Sound.Load("../tiktaktoeSimple/assets/opening.ogg")
+  'Sound.play
+'  End
+  
+
 Public tabuleiro As New String[3, 3]    
 Public turn As Integer ' IF 10 > turn player 1 | IF 20 turn player 2
 Public simbol As String ' X as Player 1  | O as Player 2
@@ -8,6 +15,10 @@ Public scorep1 As Integer
 Public scorep2 As Integer
 Public scorep3 As Integer
 Public anychampion As Boolean
+Public cordoplayer As String
+Public botaocor As ToolButton
+Public objIsImpossible As Object[]
+
 
 
 
@@ -86,6 +97,12 @@ End
 
 
 Public Sub atualizador()
+ Dim marcador As Sound
+
+  
+  marcador = Sound.Load("./assets/markttt.ogg")    ' sound check
+  marcador.play
+  
 
 If turn = 10
 
@@ -97,7 +114,6 @@ Else
 
 simbol = "X"
 whoplayer.Text = "PLAYER 2"
-
   
   Endif
 
@@ -149,11 +165,21 @@ End
 
 Public Sub bnt1_Click()
 
-  atualizador
+  atualizador()
   bnt1.Text = simbol
   tabuleiro[0, 0] = (bnt1.Text)
   playdef
   bnt1.Enabled = False
+  
+     
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
+
+bnt1.Foreground = Color.Green
+Else
+bnt1.Foreground = Color.Pink
+  Endif
+
 
 End
 
@@ -165,6 +191,16 @@ Public Sub bnt2_Click()
   playdef
   bnt2.Enabled = False
   
+    
+     
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
+
+bnt2.Foreground = Color.Green
+Else
+bnt2.Foreground = Color.Pink
+  Endif
+
   End
 
 Public Sub bnt3_Click()
@@ -176,6 +212,15 @@ Public Sub bnt3_Click()
   playdef
   bnt3.Enabled = False
 
+  
+     
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
+
+bnt3.Foreground = Color.Green
+Else
+bnt3.Foreground = Color.Pink
+  Endif
 
 End
 
@@ -187,6 +232,15 @@ Public Sub bnt4_Click()
   tabuleiro[1, 0] = (bnt4.Text)
   playdef
   bnt4.Enabled = False
+  
+     
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
+
+bnt4.Foreground = Color.Green
+Else
+bnt4.Foreground = Color.Pink
+  Endif
 
 End
 
@@ -198,6 +252,15 @@ Public Sub bnt5_Click()
   tabuleiro[1, 1] = (bnt5.Text)
   playdef
   bnt5.Enabled = False
+  
+     
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
+
+bnt5.Foreground = Color.Green
+Else
+bnt5.Foreground = Color.Pink
+  Endif
 
 End
 
@@ -209,6 +272,15 @@ Public Sub bnt6_Click()
   tabuleiro[1, 2] = (bnt6.Text)
   playdef
   bnt6.Enabled = False
+  
+     
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
+
+bnt6.Foreground = Color.Green
+Else
+bnt6.Foreground = Color.Pink
+  Endif
 
 End
 
@@ -220,6 +292,15 @@ Public Sub bnt7_Click()
   tabuleiro[2, 0] = (bnt7.Text)
   playdef
   bnt7.Enabled = False
+  
+     
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
+
+bnt7.Foreground = Color.Green
+Else
+bnt7.Foreground = Color.Pink
+  Endif
 
 End
 
@@ -231,6 +312,15 @@ Public Sub bnt8_Click()
   tabuleiro[2, 1] = (bnt8.Text)
   playdef
   bnt8.Enabled = False
+  
+     
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
+
+bnt8.Foreground = Color.Green
+Else
+bnt8.Foreground = Color.Pink
+  Endif
 
 End
 
@@ -242,7 +332,16 @@ Public Sub bnt9_Click()
   tabuleiro[2, 2] = (bnt9.Text)
   playdef
   bnt9.Enabled = False
+  
+  
+     
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
 
+bnt9.Foreground = Color.Green
+Else
+bnt9.Foreground = Color.Pink
+  Endif
 End
 
 Public Sub ng_Click()
@@ -317,31 +416,35 @@ Public Sub logiplayer1()
   If tabuleiro[0, 0] = "X" And tabuleiro[0, 1] = "X" And tabuleiro[0, 2] = "X" Then
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
-    Message("PLAYER 1 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 1 WINS!")
     bloqueador
-  Endif
+    
+Else
   
   
     
   If tabuleiro[0, 0] = "X" And tabuleiro[1, 1] = "X" And tabuleiro[2, 2] = "X" Then
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
-    Message("PLAYER 1 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 1 WINS!")
     bloqueador
-  Endif
-  
-  
+ 
+ Else
+
     
     
   If tabuleiro[0, 0] = "X" And tabuleiro[1, 0] = "X" And tabuleiro[2, 0] = "X" Then
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
-    Message("PLAYER 1 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 1 WINS!")
     bloqueador
-  Endif
+Else
   
     
     
@@ -349,29 +452,34 @@ Public Sub logiplayer1()
   If tabuleiro[0, 2] = "X" And tabuleiro[1, 2] = "X" And tabuleiro[2, 2] = "X" Then
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
-    Message("PLAYER 1 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 1 WINS!")
     bloqueador
-  Endif
+Else
       
     
     
   If tabuleiro[1, 0] = "X" And tabuleiro[1, 1] = "X" And tabuleiro[1, 2] = "X" Then
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
-    Message("PLAYER 1 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 1 WINS!")
     bloqueador
-  Endif
-  
+
+  Else
+      
+      
       
   If tabuleiro[2, 0] = "X" And tabuleiro[2, 1] = "X" And tabuleiro[2, 2] = "X" Then
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
-    Message("PLAYER 1 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 1 WINS!")
     bloqueador
-  Endif
+Else
   
   
     
@@ -379,14 +487,29 @@ Public Sub logiplayer1()
   If tabuleiro[2, 0] = "X" And tabuleiro[1, 1] = "X" And tabuleiro[0, 2] = "X" Then
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
-    Message("PLAYER 1 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 1 WINS!")
+    bloqueador
+Else
+  
+        
+      
+  If tabuleiro[0, 1] = "X" And tabuleiro[2, 1] = "X" And tabuleiro[1, 1] = "X" Then
+    scorep1 = scorep1 + 1
+    sco1.Text = CString(scorep1)
+    anychampion = True
+    tocavitoria 
+    Message("PLAYER 1 WINS!")
     bloqueador
   Endif
-  
-    
-  
-  
+  Endif
+  Endif
+  Endif
+  Endif
+  Endif
+  Endif
+  Endif
 End
 
 
@@ -399,20 +522,22 @@ Public Sub logiplayer2()
   If tabuleiro[0, 0] = "O" And tabuleiro[0, 1] = "O" And tabuleiro[0, 2] = "O" Then
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
-    Message("PLAYER 2 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 2 WINS!")
     bloqueador
-  Endif
+  Else
   
   
     
   If tabuleiro[0, 0] = "O" And tabuleiro[1, 1] = "O" And tabuleiro[2, 2] = "O" Then
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
-    Message("PLAYER 2 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 2 WINS!")
     bloqueador
-  Endif
+  Else
   
   
     
@@ -420,10 +545,11 @@ Public Sub logiplayer2()
   If tabuleiro[0, 0] = "O" And tabuleiro[1, 0] = "O" And tabuleiro[2, 0] = "O" Then
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
-    Message("PLAYER 2 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 2 WINS!")
     bloqueador
-  Endif
+  Else
   
     
     
@@ -431,37 +557,41 @@ Public Sub logiplayer2()
   If tabuleiro[0, 2] = "O" And tabuleiro[1, 2] = "O" And tabuleiro[2, 2] = "O" Then
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
+    anychampion = True
+    tocavitoria 
     Message("PLAYER 2 WINS!")
     bloqueador
-  Endif
+  Else
       
     
     
   If tabuleiro[1, 0] = "O" And tabuleiro[1, 1] = "O" And tabuleiro[1, 2] = "O" Then
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
-    Message("PLAYER 2 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 2 WINS!")
     bloqueador
-  Endif
+  Else
   
       
   If tabuleiro[2, 0] = "O" And tabuleiro[2, 1] = "O" And tabuleiro[2, 2] = "O" Then
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
-    Message("PLAYER 2 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 2 WINS!")
     bloqueador
-  Endif
-  
+  Else
     
     
       
   If tabuleiro[2, 0] = "O" And tabuleiro[1, 1] = "O" And tabuleiro[0, 2] = "O" Then
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
-    Message("PLAYER 2 WINS!")
     anychampion = True
+    tocavitoria 
+    Message("PLAYER 2 WINS!")
     bloqueador
   Endif
   
@@ -479,6 +609,12 @@ If anychampion = False Then
   
   
   
+Endif
+Endif
+Endif
+Endif
+Endif
+Endif
 Endif
   
 End
@@ -498,5 +634,40 @@ bnt9.Enabled = False
   
 End
 
+
+
+Public Sub definecolor()
+objIsImpossible = New Object[] 
+
+
+botaocor = New ToolButton(Me)
+     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
+If turn = 10
+
+botaocor.Foreground = Color.Green
+Else
+  
+botaocor.Foreground = Color.Pink
+  Endif
+
+Return 
+  
+End
+
+
+
+Public Sub tocavitoria()
+  
+  
+If anychampion = True Then
+
+ Dim marcador As Sound
+
+  
+  marcador = Sound.Load("./assets/winner.ogg")    ' sound of victory
+  marcador.play
+Endif
+  
+End
 
 

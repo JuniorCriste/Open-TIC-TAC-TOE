@@ -14,6 +14,13 @@ Comments--Anotações
                                            B1 * B2 * B3 v
                                            C1 * C2 * C3 v
                                            C1 * B2 * A3 v
+                                           
+                                           
+Cores Buttons...
+
+Jogador 1 =  &H2FC02F&
+Jogador 2 =  &HFF3FFF&
+   
 
                                            
                                            
