@@ -1,9 +1,7 @@
 ###### _eng_
-## A simple Tik Tak Toe using Gambas IDE.
-##### by Junior Criste
+## Open Tic Tac Toe is a free and open source game developed by Junior Criste to run on Linux systems.
 
 ###### _pt-br_
-### Um Jogo da Velha simples usando  Gambas IDE.
-##### por Junior Criste
+### Open Tic Tac Toe é um "jogo da velha" gratuito e de código aberto desenvolvido por Junior Criste para rodar em sistemas Linux. 
 
-<img src="https://github.com/JuniorCriste/TIK-TAK-TOE/blob/master/assets/Printscreen/window.png">
+<img src="https://4.bp.blogspot.com/-5QperKE_5L0/XpAU4VDljAI/AAAAAAAAGyw/TGnulTi2IP0kYbirBYAzY4omkvuuAt3gwCLcBGAsYHQ/s1600/windows.png">
