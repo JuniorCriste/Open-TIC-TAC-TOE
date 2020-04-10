@@ -1,0 +1,16 @@
+' Gambas class file
+
+
+Public Sub Form_Open()
+
+  
+
+End
+
+Public Sub fakelink_MouseDown()
+
+   
+   Shell "firefox www.github/juniorcriste"
+
+End
+

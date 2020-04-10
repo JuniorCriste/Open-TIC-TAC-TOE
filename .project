@@ -1,8 +1,8 @@
 # Gambas Project File 3.0
-Title=Simples Tik Tak Toe
-Startup=Game
+Title=Open Tic Tac Toe
+Startup=MenuG
 Icon=assets/back_icon.png
-Version=0.0.1
+Version=1.0.0
 Component=gb.image
 Component=gb.gui
 Component=gb.form

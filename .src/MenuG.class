@@ -1,0 +1,42 @@
+' Gambas class file
+
+Public typemode As Integer ' IF 1 -> People x People  |  IF 2 People X Computer
+
+
+Public Sub Form_Open()
+
+  
+
+End
+
+Public Sub op1_MouseDown()
+
+  typemode = 1
+  Game.playername = "PLAYER 2"
+  Game.infp2plus.Text = "PLAYER2"
+  
+    Game.Show
+    MenuG.Hide
+
+End
+
+Public Sub op2_MouseDown()
+
+    typemode = 2
+  Game.playername = "COMPUTER"
+  Game.infp2plus.Text = "COMPUTER"
+    
+    Game.Show
+    MenuG.Hide
+
+End
+
+Public Sub Form_KeyPress()
+
+  
+    If Key.Code = 65470 Then 
+ About.Show
+Endif
+
+
+End

@@ -17,6 +17,7 @@ Public scorep3 As Integer
 Public anychampion As Boolean
 Public cordoplayer As String
 Public botaocor As ToolButton
+Public playername As String
 Public objIsImpossible As Object[]
 
 
@@ -29,7 +30,6 @@ scorep1 = 0
 scorep2 = 0
 scorep3 = 0
 anychampion = False
-
 
 End
 
@@ -113,7 +113,7 @@ whoplayer.Text = "PLAYER 1"
 Else
 
 simbol = "X"
-whoplayer.Text = "PLAYER 2"
+whoplayer.Text = playername
   
   Endif
 
@@ -180,6 +180,7 @@ Else
 bnt1.Foreground = Color.Pink
   Endif
 
+verificatypemode
 
 End
 
@@ -201,6 +202,8 @@ Else
 bnt2.Foreground = Color.Pink
   Endif
 
+
+verificatypemode
   End
 
 Public Sub bnt3_Click()
@@ -222,6 +225,8 @@ Else
 bnt3.Foreground = Color.Pink
   Endif
 
+
+verificatypemode
 End
 
 Public Sub bnt4_Click()
@@ -242,6 +247,8 @@ Else
 bnt4.Foreground = Color.Pink
   Endif
 
+
+verificatypemode
 End
 
 Public Sub bnt5_Click()
@@ -262,6 +269,8 @@ Else
 bnt5.Foreground = Color.Pink
   Endif
 
+
+verificatypemode
 End
 
 Public Sub bnt6_Click()
@@ -282,6 +291,8 @@ Else
 bnt6.Foreground = Color.Pink
   Endif
 
+
+verificatypemode
 End
 
 Public Sub bnt7_Click()
@@ -302,6 +313,8 @@ Else
 bnt7.Foreground = Color.Pink
   Endif
 
+
+verificatypemode
 End
 
 Public Sub bnt8_Click()
@@ -322,6 +335,8 @@ Else
 bnt8.Foreground = Color.Pink
   Endif
 
+
+verificatypemode
 End
 
 Public Sub bnt9_Click()
@@ -342,6 +357,9 @@ bnt9.Foreground = Color.Green
 Else
 bnt9.Foreground = Color.Pink
   Endif
+  
+
+verificatypemode
 End
 
 Public Sub ng_Click()
@@ -524,7 +542,7 @@ Public Sub logiplayer2()
     sco2.Text = CString(scorep2)
     anychampion = True
     tocavitoria 
-    Message("PLAYER 2 WINS!")
+    Message(playername & " WINS!")
     bloqueador
   Else
   
@@ -535,7 +553,7 @@ Public Sub logiplayer2()
     sco2.Text = CString(scorep2)
     anychampion = True
     tocavitoria 
-    Message("PLAYER 2 WINS!")
+    Message(playername & " WINS!")
     bloqueador
   Else
   
@@ -547,7 +565,7 @@ Public Sub logiplayer2()
     sco2.Text = CString(scorep2)
     anychampion = True
     tocavitoria 
-    Message("PLAYER 2 WINS!")
+    Message(playername & " WINS!")
     bloqueador
   Else
   
@@ -559,7 +577,7 @@ Public Sub logiplayer2()
     sco2.Text = CString(scorep2)
     anychampion = True
     tocavitoria 
-    Message("PLAYER 2 WINS!")
+    Message(playername & " WINS!")
     bloqueador
   Else
       
@@ -570,7 +588,7 @@ Public Sub logiplayer2()
     sco2.Text = CString(scorep2)
     anychampion = True
     tocavitoria 
-    Message("PLAYER 2 WINS!")
+    Message(playername & " WINS!")
     bloqueador
   Else
   
@@ -580,7 +598,19 @@ Public Sub logiplayer2()
     sco2.Text = CString(scorep2)
     anychampion = True
     tocavitoria 
-    Message("PLAYER 2 WINS!")
+    Message(playername & " WINS!")
+    bloqueador
+  Else
+    
+    
+    
+      
+  If tabuleiro[0, 1] = "O" And tabuleiro[1, 1] = "O" And tabuleiro[2, 1] = "O" Then
+    scorep2 = scorep2 + 1
+    sco2.Text = CString(scorep2)
+    anychampion = True
+    tocavitoria 
+    Message(playername & " WINS!")
     bloqueador
   Else
     
@@ -591,7 +621,7 @@ Public Sub logiplayer2()
     sco2.Text = CString(scorep2)
     anychampion = True
     tocavitoria 
-    Message("PLAYER 2 WINS!")
+    Message(playername & " WINS!")
     bloqueador
   Endif
   
@@ -609,6 +639,7 @@ If anychampion = False Then
   
   
   
+Endif
 Endif
 Endif
 Endif
@@ -671,3 +702,180 @@ Endif
 End
 
 
+
+Public Sub backtoini_Click()
+
+  MenuG.Show
+
+End
+
+
+
+Public Sub verificatypemode()
+
+If anychampion = False Then
+  
+  If MenuG.typemode = 2 Then
+    simbol = "O"
+    QuandoForComputer
+  Endif
+Endif
+  
+End
+
+
+
+
+Public Sub QuandoForComputer()
+  Dim sorteacampo As Integer
+  Dim valorencontrado As Boolean
+  
+  
+  valorencontrado = False
+  Wait 0.7
+  Repeat 
+   Randomize
+ sorteacampo = Int(Rnd(1, 10))
+ 
+ Print (sorteacampo)
+ 
+  If sorteacampo = 1 Then
+     If bnt1.Text = "" Then
+       bnt1.Foreground = Color.Pink
+       bnt1.Text = simbol
+       tabuleiro[0, 0] = (bnt1.Text)
+       bnt1.Enabled = False
+       valorencontrado = True
+       
+       Endif
+
+  Else
+    
+      
+  If sorteacampo = 2 Then
+     If bnt2.Text = "" Then
+       bnt2.Foreground = Color.Pink
+       bnt2.Text = simbol
+       tabuleiro[0, 1] = (bnt2.Text)
+       bnt2.Enabled = False
+       valorencontrado = True
+       Endif
+
+  Else
+    
+      
+  If sorteacampo = 3 Then
+     If bnt3.Text = "" Then
+       bnt3.Foreground = Color.Pink
+       bnt3.Text = simbol
+       tabuleiro[0, 2] = (bnt3.Text)
+       bnt3.Enabled = False
+       valorencontrado = True
+       Endif
+
+  Else
+    
+      
+  If sorteacampo = 4 Then
+     If bnt4.Text = "" Then
+       bnt4.Foreground = Color.Pink
+       bnt4.Text = simbol
+       tabuleiro[1, 0] = (bnt4.Text)
+       bnt4.Enabled = False
+       valorencontrado = True
+       Endif
+
+  Else
+    
+      
+  If sorteacampo = 5 Then
+     If bnt5.Text = "" Then
+       bnt5.Foreground = Color.Pink
+       bnt5.Text = simbol
+       tabuleiro[1, 1] = (bnt5.Text)
+       bnt5.Enabled = False
+       valorencontrado = True
+       Endif
+
+  Else
+    
+      
+  If sorteacampo = 6 Then
+     If bnt6.Text = "" Then
+       bnt6.Foreground = Color.Pink
+       bnt6.Text = simbol
+       tabuleiro[1, 2] = (bnt6.Text)
+       bnt6.Enabled = False
+       valorencontrado = True
+       Endif
+
+  Else
+    
+      
+  If sorteacampo = 7 Then
+     If bnt7.Text = "" Then
+       bnt7.Foreground = Color.Pink
+       bnt7.Text = simbol
+       tabuleiro[2, 0] = (bnt7.Text)
+       bnt7.Enabled = False
+       valorencontrado = True
+       Endif
+
+  Else
+    
+      
+  If sorteacampo = 8 Then
+     If bnt8.Text = "" Then
+       bnt8.Foreground = Color.Pink
+       bnt8.Text = simbol
+       tabuleiro[2, 1] = (bnt8.Text)
+       bnt8.Enabled = False
+       valorencontrado = True
+       Endif
+
+  Else
+    
+      
+  If sorteacampo = 9 Then
+     If bnt9.Text = "" Then
+       bnt9.Foreground = Color.Pink
+       bnt9.Text = simbol
+       tabuleiro[2, 2] = (bnt9.Text)
+       bnt9.Enabled = False
+       valorencontrado = True
+       Endif
+
+    Endif
+        Endif
+            Endif
+                Endif
+                    Endif
+                        Endif
+                            Endif
+                                Endif
+                                    Endif
+                                    
+                                    Until valorencontrado = True
+                                    
+    atualizador
+    playdef
+    
+End
+
+
+
+
+Public Sub Form_Close()
+
+  MenuG.Show
+
+End
+
+Public Sub Form_KeyPress()
+
+    If Key.Code = 65470 Then 
+ About.Show
+Endif
+
+
+End

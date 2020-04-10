@@ -2,7 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,89,70)
-  Text = ("TIK TAK TOE")
+  Text = ("Open Tic Tac Toe")
   Icon = Picture["assets/back_icon.png"]
   Resizable = False
   { fndext PictureBox
@@ -59,7 +59,7 @@
     Foreground = &HFF3FFF&
   }
   { ng ToolButton
-    MoveScaled(73,60,13,7)
+    MoveScaled(73,59,13,7)
     Foreground = &H808080&
     Text = ("NEW GAME")
   }
@@ -90,11 +90,12 @@
     Text = ("score\nPLAYER 1")
     Alignment = Align.Center
   }
-  { infp2 Label
-    MoveScaled(70,33,19,5)
+  { !infp2 Label
+    MoveScaled(70,32,19,5)
+    #Public = True
     Font = Font["Geometos,+2"]
     Foreground = &H536056&
-    Text = ("score\nPLAYER 2")
+    Text = ("score")
     Alignment = Align.Center
   }
   { infp3 Label
@@ -109,6 +110,14 @@
     Font = Font["Geometos,+2"]
     Foreground = &H006018&
     Text = ("0")
+    Alignment = Align.Center
+  }
+  { !infp2plus Label
+    MoveScaled(70,34.2857,19,5)
+    #Public = True
+    Font = Font["Geometos,+2"]
+    Foreground = &H536056&
+    Text = ("user")
     Alignment = Align.Center
   }
 }
