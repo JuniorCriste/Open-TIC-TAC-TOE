@@ -1,13 +1,6 @@
 ' Gambas class file
 
 
-
-' Static Function Load(Path As String)
-  'Sound.Load("../tiktaktoeSimple/assets/opening.ogg")
-  'Sound.play
-'  End
-  
-
 Public tabuleiro As New String[3, 3]    
 Public turn As Integer ' IF 10 > turn player 1 | IF 20 turn player 2
 Public simbol As String ' X as Player 1  | O as Player 2
@@ -19,24 +12,95 @@ Public cordoplayer As String
 Public botaocor As ToolButton
 Public playername As String
 Public objIsImpossible As Object[]
+Public resultV As Integer ' if 1=Player 1 win | if 2=Player 2 Win | if 3=Computer win | if 4=Nobody 
+
 
 
 
 
 Public Sub Form_Open()
+Dim voice As Sound
 turn = 20
 whoplayer.Text = "PLAYER 1"
 scorep1 = 0
 scorep2 = 0
 scorep3 = 0
 anychampion = False
+definecursor
+voice = Sound.Load("./assets/Sounds/newG.ogg")    ' audio new game
+voice.play
 
 End
 
 
+Public Sub definecursor()
+  
+    bnt1.Mouse = Mouse.Custom
+    bnt1.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+  
+    bnt2.Mouse = Mouse.Custom
+    bnt2.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+  
+    bnt3.Mouse = Mouse.Custom
+    bnt3.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+  
+    bnt4.Mouse = Mouse.Custom
+    bnt4.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+  
+    bnt5.Mouse = Mouse.Custom
+    bnt5.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+  
+    bnt6.Mouse = Mouse.Custom
+    bnt6.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+  
+    bnt7.Mouse = Mouse.Custom
+    bnt7.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+  
+    bnt8.Mouse = Mouse.Custom
+    bnt8.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+  
+    bnt9.Mouse = Mouse.Custom
+    bnt9.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+    
+    fnd.Mouse = Mouse.Custom
+    fnd.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    fndext.Mouse = Mouse.Custom
+    fndext.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    whoplayer.Mouse = Mouse.Custom
+    whoplayer.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    infp1.Mouse = Mouse.Custom
+    infp1.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    infp3.Mouse = Mouse.Custom
+    infp3.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    infp2.Mouse = Mouse.Custom
+    infp2.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    sco1.Mouse = Mouse.Custom
+    sco1.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    sco2.Mouse = Mouse.Custom
+    sco2.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    sco3.Mouse = Mouse.Custom
+    sco3.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    infp2plus.Mouse = Mouse.Custom
+    infp2plus.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    ng.Mouse = Mouse.Custom
+    ng.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
 
 
 
+
+
+
+End
 
 
 
@@ -100,7 +164,7 @@ Public Sub atualizador()
  Dim marcador As Sound
 
   
-  marcador = Sound.Load("./assets/markttt.ogg")    ' sound check
+  marcador = Sound.Load("./assets/Sounds/markttt.ogg")    ' sound check
   marcador.play
   
 
@@ -165,7 +229,7 @@ End
 
 Public Sub bnt1_Click()
 
-  atualizador()
+  atualizador
   bnt1.Text = simbol
   tabuleiro[0, 0] = (bnt1.Text)
   playdef
@@ -363,62 +427,7 @@ verificatypemode
 End
 
 Public Sub ng_Click()
-Dim v As Integer
-Dim h As Integer
-v = 0
-h = 0
 
-
-turn = 20
-whoplayer.Text = "PLAYER 1"
-
-
-
-
-
-' comeco Z E R A N D O V A R I A V E I S
-
-
-Repeat
-  v = 0
-  Repeat
-     tabuleiro[h, v] = 0
-     v = v + 1
-  
-       Until v > 2
-
-   h = h + 1 
-
-Until h > 2
-
-  
-' fim Z E R A N D O V A R I A V E I S
-
-
-
-
-bnt1.Text = ""
-bnt2.Text = ""
-bnt3.Text = ""
-bnt4.Text = ""
-bnt5.Text = ""
-bnt6.Text = ""
-bnt7.Text = ""
-bnt8.Text = ""
-bnt9.Text = ""
-
-
-bnt1.Enabled = True
-bnt2.Enabled = True
-bnt3.Enabled = True
-bnt4.Enabled = True
-bnt5.Enabled = True
-bnt6.Enabled = True
-bnt7.Enabled = True
-bnt8.Enabled = True
-bnt9.Enabled = True
-
-anychampion = False
 End
 
 
@@ -435,6 +444,7 @@ Public Sub logiplayer1()
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
     anychampion = True
+    resultV = 1
     tocavitoria 
     Message("PLAYER 1 WINS!")
     bloqueador
@@ -447,6 +457,7 @@ Else
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
     anychampion = True
+    resultV = 1
     tocavitoria 
     Message("PLAYER 1 WINS!")
     bloqueador
@@ -459,6 +470,7 @@ Else
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
     anychampion = True
+    resultV = 1
     tocavitoria 
     Message("PLAYER 1 WINS!")
     bloqueador
@@ -471,6 +483,7 @@ Else
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
     anychampion = True
+    resultV = 1
     tocavitoria 
     Message("PLAYER 1 WINS!")
     bloqueador
@@ -482,6 +495,7 @@ Else
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
     anychampion = True
+    resultV = 1
     tocavitoria 
     Message("PLAYER 1 WINS!")
     bloqueador
@@ -494,6 +508,7 @@ Else
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
     anychampion = True
+    resultV = 1
     tocavitoria 
     Message("PLAYER 1 WINS!")
     bloqueador
@@ -506,6 +521,7 @@ Else
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
     anychampion = True
+    resultV = 1
     tocavitoria 
     Message("PLAYER 1 WINS!")
     bloqueador
@@ -517,6 +533,7 @@ Else
     scorep1 = scorep1 + 1
     sco1.Text = CString(scorep1)
     anychampion = True
+    resultV = 1
     tocavitoria 
     Message("PLAYER 1 WINS!")
     bloqueador
@@ -541,6 +558,7 @@ Public Sub logiplayer2()
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
     anychampion = True
+    voiceDefPl2orComputer
     tocavitoria 
     Message(playername & " WINS!")
     bloqueador
@@ -552,6 +570,7 @@ Public Sub logiplayer2()
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
     anychampion = True
+    voiceDefPl2orComputer
     tocavitoria 
     Message(playername & " WINS!")
     bloqueador
@@ -564,6 +583,7 @@ Public Sub logiplayer2()
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
     anychampion = True
+    voiceDefPl2orComputer
     tocavitoria 
     Message(playername & " WINS!")
     bloqueador
@@ -576,6 +596,7 @@ Public Sub logiplayer2()
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
     anychampion = True
+    voiceDefPl2orComputer
     tocavitoria 
     Message(playername & " WINS!")
     bloqueador
@@ -587,6 +608,7 @@ Public Sub logiplayer2()
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
     anychampion = True
+    voiceDefPl2orComputer
     tocavitoria 
     Message(playername & " WINS!")
     bloqueador
@@ -597,6 +619,7 @@ Public Sub logiplayer2()
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
     anychampion = True
+    voiceDefPl2orComputer
     tocavitoria 
     Message(playername & " WINS!")
     bloqueador
@@ -609,6 +632,7 @@ Public Sub logiplayer2()
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
     anychampion = True
+    voiceDefPl2orComputer
     tocavitoria 
     Message(playername & " WINS!")
     bloqueador
@@ -620,6 +644,7 @@ Public Sub logiplayer2()
     scorep2 = scorep2 + 1
     sco2.Text = CString(scorep2)
     anychampion = True
+    voiceDefPl2orComputer
     tocavitoria 
     Message(playername & " WINS!")
     bloqueador
@@ -633,6 +658,9 @@ If anychampion = False Then
   If bnt1.Text <> "" And bnt2.Text <> "" And bnt3.Text <> "" And bnt4.Text <> "" And bnt5.Text <> "" And bnt6.Text <> "" And bnt7.Text <> "" And bnt8.Text <> "" And bnt9.Text <> "" Then
     scorep3 = scorep3 + 1
     sco3.Text = CString(scorep3)
+    anychampion = True
+    resultV = 4
+    voiceReproducer
     Message("N O B O D Y!")
     bloqueador
   Endif
@@ -689,14 +717,13 @@ End
 
 Public Sub tocavitoria()
   
-  
+'Dim marcador As Sound
+
+
 If anychampion = True Then
-
- Dim marcador As Sound
-
-  
-  marcador = Sound.Load("./assets/winner.ogg")    ' sound of victory
-  marcador.play
+ ' marcador = Sound.Load("./assets/Sounds/winnerRobot.ogg")    ' sound of victory
+ ' marcador.play
+  voiceReproducer
 Endif
   
 End
@@ -877,5 +904,118 @@ Public Sub Form_KeyPress()
  About.Show
 Endif
 
+
+End
+
+
+
+Public Sub voiceDefPl2orComputer()
+  
+      
+    If playername = "COMPUTER" Then
+    resultV = 3
+    Else
+      resultV = 2
+    Endif
+      
+    
+  
+End
+
+
+Public Sub voiceReproducer()
+  
+   Dim voice As Sound
+
+   Wait 0.4
+
+  If resultV = 1 Then
+  voice = Sound.Load("./assets/Sounds/voiceP1.ogg")    ' voice select
+  voice.play
+  Else
+    
+    If resultV = 2 Then
+    voice = Sound.Load("./assets/Sounds/voiceP2.ogg")    ' voice select
+    voice.play
+    Else
+    
+      If resultV = 3 Then
+      voice = Sound.Load("./assets/Sounds/voiceComputer.ogg")    ' voice select
+      voice.play
+      Else
+    
+        If resultV = 4 Then
+        voice = Sound.Load("./assets/Sounds/voiceNobody.ogg")    ' voice select
+        voice.play
+          Endif
+        Endif
+      Endif
+  Endif
+    
+  
+  
+End
+
+
+Public Sub ng_MouseDown()
+
+  Dim v As Integer
+Dim h As Integer
+Dim voice As Sound
+v = 0
+h = 0
+
+
+turn = 20
+whoplayer.Text = "PLAYER 1"
+
+voice = Sound.Load("./assets/Sounds/newG.ogg")    ' audio new game
+voice.play
+
+
+
+' comeco Z E R A N D O V A R I A V E I S
+
+
+Repeat
+  v = 0
+  Repeat
+     tabuleiro[h, v] = 0
+     v = v + 1
+  
+       Until v > 2
+
+   h = h + 1 
+
+Until h > 2
+
+  
+' fim Z E R A N D O V A R I A V E I S
+
+
+
+
+bnt1.Text = ""
+bnt2.Text = ""
+bnt3.Text = ""
+bnt4.Text = ""
+bnt5.Text = ""
+bnt6.Text = ""
+bnt7.Text = ""
+bnt8.Text = ""
+bnt9.Text = ""
+
+
+bnt1.Enabled = True
+bnt2.Enabled = True
+bnt3.Enabled = True
+bnt4.Enabled = True
+bnt5.Enabled = True
+bnt6.Enabled = True
+bnt7.Enabled = True
+bnt8.Enabled = True
+bnt9.Enabled = True
+
+anychampion = False
 
 End

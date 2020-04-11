@@ -1,0 +1,85 @@
+' Gambas class file
+
+' HELLO!
+' All Songs are by "Audio Library — Music for content creators" in https://www.youtube.com/channel/UCht8qITGkBvXKsR1Byln-wA
+' track1 = Disco - strange day[Vlog No Copyright Music]
+' track2 = Battle Boss - BoxCat Games[Vlog No Copyright Music]
+' track3 = Across The Ocean - JR Tundra(No Copyright Music)
+' track4 = Breeze - MusicbyAden[Vlog No Copyright Music]
+
+Public themeValue As String
+
+
+
+Public Sub Form_Open()
+
+
+    inf1.Mouse = Mouse.Custom
+    inf1.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    musicop.Mouse = Mouse.Custom
+    musicop.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
+    inf2.Mouse = Mouse.Custom
+    inf2.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    optrack1.Mouse = Mouse.Custom
+    optrack1.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
+    optrack2.Mouse = Mouse.Custom
+    optrack2.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
+    optrack3.Mouse = Mouse.Custom
+    optrack3.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
+    optrack4.Mouse = Mouse.Custom
+    optrack4.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
+    apply.Mouse = Mouse.Custom
+    apply.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
+    Settings.Mouse = Mouse.Custom
+    Settings.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+
+End
+
+Public Sub apply_Click()
+
+End
+
+
+Public Sub apply_MouseDown()
+
+  
+If optrack1.Value = True Then
+  themeValue = "m1"
+Endif
+
+
+If optrack2.Value = True Then
+  themeValue = "m2"
+Endif
+
+
+If optrack3.Value = True Then
+  themeValue = "m3"
+Endif
+
+
+If optrack4.Value = True Then
+  themeValue = "m4"
+Endif
+
+If musicop.Value = False Then
+  themeValue = "none"
+Endif
+
+MenuG.tocamusica
+
+Print themeValue
+
+Settings.Hide
+
+
+End

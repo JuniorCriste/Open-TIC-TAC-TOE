@@ -1,12 +1,39 @@
 ' Gambas class file
 
 Public typemode As Integer ' IF 1 -> People x People  |  IF 2 People X Computer
+Public abriuSettings As Boolean
+Public trilha As Music
+Public curmouse As Cursor
+Public desmouse As Picture
 
 
 Public Sub Form_Open()
 
-  
+  abriuSettings = False
+  tocamusica
+ ' desmouse = Picture.Load("./assets/Imgs/cursor.png")
+ ' curmouse = New Cursor(desmouse, 300, 300)
+ 
+ 
+  op1.Mouse = Mouse.Custom
+    op1.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
+  op2.Mouse = Mouse.Custom
+    op2.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
+  infp1.Mouse = Mouse.Custom
+    infp1.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+  infp2.Mouse = Mouse.Custom
+    infp2.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+  MenuG.Mouse = Mouse.Custom
+    MenuG.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
 
+  sett.Mouse = Mouse.Custom
+    sett.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+
+  
 End
 
 Public Sub op1_MouseDown()
@@ -38,5 +65,66 @@ Public Sub Form_KeyPress()
  About.Show
 Endif
 
+
+End
+
+Public Sub sett_MouseDown()
+  abriuSettings = True
+  Settings.Show
+End
+
+
+
+Public Sub tocamusica()
+
+Music.Stop
+
+  
+  If MenuG.abriuSettings = False Then
+    Settings.themeValue = "m1"
+  Endif
+
+  If Settings.themeValue = "m1" Then
+  Music.Load("./assets/Music/track1.ogg")    ' sound check
+  Music.play(-1, 0)
+  Endif
+  
+
+  
+  If Settings.themeValue = "m2" Then
+  Music.Load("./assets/Music/track2.ogg")    ' sound check
+  Music.play(-1, 0)
+  Endif
+  
+
+  
+  If Settings.themeValue = "m3" Then
+  Music.Load("./assets/Music/track3.ogg")    ' sound check
+  Music.play(-1, 0)
+  Endif
+  
+
+  
+  If Settings.themeValue = "m4" Then
+  Music.Load("./assets/Music/track4.ogg")    ' sound check
+  Music.play(-1, 0)
+  Endif
+  
+
+  
+  If Settings.themeValue = "none" Then
+
+  Endif
+  
+
+  
+End
+
+
+
+
+Public Sub Form_Close()
+
+  Music.Stop
 
 End

@@ -1,13 +1,15 @@
 # Gambas Project File 3.0
 Title=Open Tic Tac Toe
 Startup=MenuG
-Icon=assets/back_icon.png
+Icon=assets/Imgs/back_icon.png
 Version=1.0.1
 Component=gb.image
 Component=gb.gui
 Component=gb.form
 Component=gb.sdl2.audio
+Description="Open Tic Tac Toe is a free and open source game developed by Junior Criste to run on Linux systems.\n\nOpen Tic Tac Toe é um \"jogo da velha\" gratuito e de código aberto desenvolvido por Junior Criste para rodar em sistemas Linux."
 TabSize=2
+Translate=1
 Language=en_US
 Maintainer=Junior Criste
 Vendor=JuniorCriste

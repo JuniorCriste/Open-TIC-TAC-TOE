@@ -1,0 +1,45 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,60,28)
+  Background = &H073140&
+  Resizable = False
+  { inf1 Label
+    MoveScaled(4,1,11,5)
+    Font = Font["Geometos,+2"]
+    Foreground = &HC0C0C0&
+    Text = ("MUSIC")
+  }
+  { musicop SwitchButton
+    MoveScaled(16,1,8,4)
+    Value = True
+  }
+  { inf2 Label
+    MoveScaled(4,9,11,5)
+    Font = Font["Geometos,+2"]
+    Foreground = &HC0C0C0&
+    Text = ("THEME")
+  }
+  { optrack1 RadioButton
+    MoveScaled(4,15,14,4)
+    Text = ("Galactic")
+    Value = True
+  }
+  { optrack2 RadioButton
+    MoveScaled(23,15,15,4)
+    Text = ("Metropolis")
+  }
+  { optrack3 RadioButton
+    MoveScaled(4,20,14,4)
+    Text = ("Soft")
+  }
+  { optrack4 RadioButton
+    MoveScaled(23,20,15,4)
+    Text = ("Future")
+  }
+  { apply PictureBox
+    MoveScaled(42,19,15,6)
+    Picture = Picture["assets/Imgs/ok.png"]
+    Mode = PictureBox.Contain
+  }
+}

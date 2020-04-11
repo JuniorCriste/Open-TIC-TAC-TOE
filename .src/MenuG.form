@@ -1,33 +1,40 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,46,54)
+  MoveScaled(0,0,46,55)
   Background = &H073140&
   Text = ("Open Tic Tac Toe")
   Icon = Picture["assets/back_icon.png"]
   Resizable = False
   { op1 PictureBox
-    MoveScaled(1,2,43.7143,21.4286)
+    MoveScaled(1,3,43.7143,21.4286)
     Mouse = Mouse.Pointing
     Picture = Picture["assets/Players/ctrl1.png"]
   }
   { op2 PictureBox
-    MoveScaled(1,28,43.7143,21.4286)
+    MoveScaled(1,29,43.7143,21.4286)
     Mouse = Mouse.Pointing
     Picture = Picture["assets/Players/ctrl2.png"]
   }
   { infp1 Label
-    MoveScaled(7,23,35,5)
+    MoveScaled(7,24,35,5)
     Font = Font["Geometos,+2"]
     Foreground = &HC0C0C0&
-    Text = ("PEOPLE   X   PEOPLE")
+    Text = ("PLAYER X PLAYER")
     Alignment = Align.Center
   }
   { infp2 Label
-    MoveScaled(5,49,35,5)
+    MoveScaled(5,50,35,5)
     Font = Font["Geometos,+2"]
     Foreground = &HC0C0C0&
-    Text = ("PEOPLE   X   COMPUTER")
+    Text = ("PLAYER   X   COMPUTER")
     Alignment = Align.Center
+  }
+  { !sett PictureBox
+    MoveScaled(43,0,3,4)
+    #Public = True
+    Mouse = Mouse.Pointing
+    Picture = Picture["assets/Imgs/sett.png"]
+    Mode = PictureBox.Contain
   }
 }

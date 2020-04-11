@@ -6,7 +6,7 @@
   Resizable = False
   { cred PictureBox
     MoveScaled(0,0,85.7143,57.1429)
-    Picture = Picture["assets/creditos.png"]
+    Picture = Picture["assets/Imgs/creditos.png"]
   }
   { fakelink PictureBox
     MoveScaled(25,49,37,5)

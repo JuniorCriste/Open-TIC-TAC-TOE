@@ -7,61 +7,65 @@
   Resizable = False
   { fndext PictureBox
     MoveScaled(69,-1,26,72)
-    Picture = Picture["assets/extensionback.png"]
+    Picture = Picture["assets/Imgs/extensionback.png"]
   }
   { fnd PictureBox
     MoveScaled(-2,-1,76,75)
-    Picture = Picture["assets/back.png"]
+    Picture = Picture["assets/Imgs/back.png"]
   }
   { bnt1 ToolButton
     MoveScaled(-1,0,20.7143,21.4286)
     Font = Font["Geometos,+13"]
     Foreground = &HFF3FFF&
+    NoTabFocus = True
   }
   { bnt2 ToolButton
     MoveScaled(25,0,17.7143,21.4286)
     Font = Font["Geometos,+13"]
     Foreground = &HFF3FFF&
+    NoTabFocus = True
   }
   { bnt3 ToolButton
     MoveScaled(47.4286,0,21.8571,21.4286)
     Font = Font["Geometos,+13"]
     Foreground = &H2FC02F&
+    NoTabFocus = True
   }
   { bnt4 ToolButton
     MoveScaled(0,27.1429,19.5714,15.7143)
     Font = Font["Geometos,+13"]
     Foreground = &HFF3FFF&
+    NoTabFocus = True
   }
   { bnt5 ToolButton
     MoveScaled(25,27.1429,17.7143,15.7143)
     Font = Font["Geometos,+13"]
     Foreground = &HFF3FFF&
+    NoTabFocus = True
   }
   { bnt6 ToolButton
     MoveScaled(47.4286,27.1429,21.8571,15.7143)
     Font = Font["Geometos,+13"]
     Foreground = &HFF3FFF&
+    NoTabFocus = True
   }
   { bnt7 ToolButton
     MoveScaled(0,48.4286,19.5714,23)
     Font = Font["Geometos,+13"]
     Foreground = &HFF3FFF&
+    NoTabFocus = True
   }
   { bnt8 ToolButton
     MoveScaled(25,48.4286,17.7143,24)
     Font = Font["Geometos,+13"]
     Foreground = &HFF3FFF&
+    NoTabFocus = True
   }
   { bnt9 ToolButton
     MoveScaled(47.2857,48.4286,22,22)
     Font = Font["Geometos,+13"]
     Foreground = &HFF3FFF&
-  }
-  { ng ToolButton
-    MoveScaled(73,59,13,7)
-    Foreground = &H808080&
-    Text = ("NEW GAME")
+    NoTabFocus = True
   }
   { whoplayer Label
     MoveScaled(72,1,16,7)
@@ -119,5 +123,10 @@
     Foreground = &H536056&
     Text = ("user")
     Alignment = Align.Center
+  }
+  { ng PictureBox
+    MoveScaled(72,61,15,6)
+    Picture = Picture["assets/Imgs/newGame.png"]
+    Mode = PictureBox.Contain
   }
 }
