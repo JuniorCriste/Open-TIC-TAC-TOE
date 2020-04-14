@@ -29,8 +29,39 @@ anychampion = False
 definecursor
 voice = Sound.Load("./assets/Sounds/newG.ogg")    ' audio new game
 voice.play
+'movimenta
 
 End
+
+
+Public Sub movimenta()
+Dim count As Integer
+Dim discount As Integer
+  count = 0
+  discount = 0
+  
+  fndMoving.X = 0
+  fndMoving.Y = 0
+  Repeat
+  
+   Repeat
+    fndMoving.X = fndMoving.X - 1 ' Horizontal movement
+    fndMoving.Y = fndMoving.Y - 1 ' Vertical movement
+    count = count + 1 ' Counter
+    Wait 0.01 ' time to next frame 
+   Until count = 1100
+  
+   Repeat
+    fndMoving.X = fndMoving.X + 1 ' Horizontal movement
+    fndMoving.Y = fndMoving.Y + 1 ' Vertical movement
+    count = count - 1 ' Counter
+    Wait 0.01 ' time to next frame 
+   Until count = 0
+  
+
+  Until discount = 100 
+End
+
 
 
 Public Sub definecursor()
@@ -91,6 +122,9 @@ Public Sub definecursor()
         
     infp2plus.Mouse = Mouse.Custom
     infp2plus.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    trava.Mouse = Mouse.Custom
+    trava.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
         
     ng.Mouse = Mouse.Custom
     ng.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
@@ -180,6 +214,7 @@ simbol = "X"
 whoplayer.Text = playername
   
   Endif
+  
 
 'bnt1.Text = tabuleiro[0, 0]
   
@@ -224,11 +259,18 @@ Endif
   logica
 End
 
+Public Sub travamento()
+  
+  If playername = "COMPUTER" Then
+        trava.Visible = True
+  Endif
+  
+End
 
 
 
 Public Sub bnt1_Click()
-
+  travamento
   atualizador
   bnt1.Text = simbol
   tabuleiro[0, 0] = (bnt1.Text)
@@ -249,7 +291,7 @@ verificatypemode
 End
 
 Public Sub bnt2_Click()
-
+  travamento
   atualizador
   bnt2.Text = simbol
   tabuleiro[0, 1] = (bnt2.Text)
@@ -271,8 +313,7 @@ verificatypemode
   End
 
 Public Sub bnt3_Click()
-
-  
+  travamento
   atualizador
   bnt3.Text = simbol
   tabuleiro[0, 2] = (bnt3.Text)
@@ -294,8 +335,7 @@ verificatypemode
 End
 
 Public Sub bnt4_Click()
-
-  
+  travamento
   atualizador
   bnt4.Text = simbol
   tabuleiro[1, 0] = (bnt4.Text)
@@ -316,8 +356,7 @@ verificatypemode
 End
 
 Public Sub bnt5_Click()
-
-  
+  travamento
   atualizador
   bnt5.Text = simbol
   tabuleiro[1, 1] = (bnt5.Text)
@@ -338,8 +377,7 @@ verificatypemode
 End
 
 Public Sub bnt6_Click()
-
-  
+  travamento  
   atualizador
   bnt6.Text = simbol
   tabuleiro[1, 2] = (bnt6.Text)
@@ -360,8 +398,7 @@ verificatypemode
 End
 
 Public Sub bnt7_Click()
-
-  
+  travamento
   atualizador
   bnt7.Text = simbol
   tabuleiro[2, 0] = (bnt7.Text)
@@ -382,8 +419,7 @@ verificatypemode
 End
 
 Public Sub bnt8_Click()
-
-  
+  travamento
   atualizador
   bnt8.Text = simbol
   tabuleiro[2, 1] = (bnt8.Text)
@@ -404,8 +440,7 @@ verificatypemode
 End
 
 Public Sub bnt9_Click()
-
-  
+  travamento
   atualizador
   bnt9.Text = simbol
   tabuleiro[2, 2] = (bnt9.Text)
@@ -675,6 +710,8 @@ Endif
 Endif
 Endif
 Endif
+
+trava.Visible = False
   
 End
 
@@ -731,7 +768,6 @@ End
 
 
 Public Sub backtoini_Click()
-
   MenuG.Show
 
 End
@@ -744,6 +780,7 @@ If anychampion = False Then
   
   If MenuG.typemode = 2 Then
     simbol = "O"
+
     QuandoForComputer
   Endif
 Endif
@@ -757,7 +794,7 @@ Public Sub QuandoForComputer()
   Dim sorteacampo As Integer
   Dim valorencontrado As Boolean
   
-  
+  travamento
   valorencontrado = False
   Wait 0.7
   Repeat 
@@ -886,6 +923,9 @@ Public Sub QuandoForComputer()
                                     
     atualizador
     playdef
+    trava.Visible = False
+    
+
     
 End
 
@@ -1019,3 +1059,4 @@ bnt9.Enabled = True
 anychampion = False
 
 End
+

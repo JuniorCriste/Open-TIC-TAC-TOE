@@ -5,13 +5,14 @@
   Text = ("Open Tic Tac Toe")
   Icon = Picture["assets/back_icon.png"]
   Resizable = False
-  { fndext PictureBox
-    MoveScaled(69,-1,26,72)
-    Picture = Picture["assets/Imgs/extensionback.png"]
+  { fndMoving PictureBox
+    MoveScaled(0,0,49,28)
+    AutoResize = True
+    Picture = Picture["assets/Imgs/movebackground1.png"]
   }
   { fnd PictureBox
     MoveScaled(-2,-1,76,75)
-    Picture = Picture["assets/Imgs/back.png"]
+    Picture = Picture["assets/Imgs/back_transparent.png"]
   }
   { bnt1 ToolButton
     MoveScaled(-1,0,20.7143,21.4286)
@@ -66,6 +67,10 @@
     Font = Font["Geometos,+13"]
     Foreground = &HFF3FFF&
     NoTabFocus = True
+  }
+  { fndext PictureBox
+    MoveScaled(69,-1,26,72)
+    Picture = Picture["assets/Imgs/extensionback.png"]
   }
   { whoplayer Label
     MoveScaled(72,1,16,7)
@@ -128,5 +133,11 @@
     MoveScaled(72,61,15,6)
     Picture = Picture["assets/Imgs/newGame.png"]
     Mode = PictureBox.Contain
+  }
+  { trava PictureBox
+    MoveScaled(0,0,69.5714,74)
+    Visible = False
+    Picture = Picture["assets/Imgs/block.png"]
+    Mode = PictureBox.Fill
   }
 }

@@ -32,7 +32,8 @@ Public Sub Form_Open()
 
   sett.Mouse = Mouse.Custom
     sett.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
-
+    
+    
   
 End
 
