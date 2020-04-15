@@ -1,8 +1,8 @@
 ' Gambas class file
 
 
-Public tabuleiro As New String[3, 3]    
-Public turn As Integer ' IF 10 > turn player 1 | IF 20 turn player 2
+Public tabuleiro As New String[3, 3]
+Public turn As Integer ' IF 10  turn player 1 | IF 20 turn player 2
 Public simbol As String ' X as Player 1  | O as Player 2
 Public scorep1 As Integer
 Public scorep2 As Integer
@@ -12,7 +12,11 @@ Public cordoplayer As String
 Public botaocor As ToolButton
 Public playername As String
 Public objIsImpossible As Object[]
-Public resultV As Integer ' if 1=Player 1 win | if 2=Player 2 Win | if 3=Computer win | if 4=Nobody 
+Public resultV As Integer ' If 1=Player 1 win | if 2=Player 2 Win | if 3=Computer win | if 4=Nobody 
+Public whoisnow As Integer ' If 1=Player 1 turn else=Other Player
+Public botaoatual As ToolButton
+Public sorteacampo As Integer
+Public indicabotao As Integer
 
 
 
@@ -20,11 +24,14 @@ Public resultV As Integer ' if 1=Player 1 win | if 2=Player 2 Win | if 3=Compute
 
 Public Sub Form_Open()
 Dim voice As Sound
-turn = 20
 whoplayer.Text = "PLAYER 1"
+whoisnow = 2
 scorep1 = 0
 scorep2 = 0
 scorep3 = 0
+turn = 10
+'botaoatual = bnt1
+'playdef
 anychampion = False
 definecursor
 voice = Sound.Load("./assets/Sounds/newG.ogg")    ' audio new game
@@ -130,40 +137,36 @@ Public Sub definecursor()
     ng.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
 
 
-
-
-
-
 End
 
 
 
 Public Sub tabuprint()
 
-
- tabuleiro[0, 0] = 1
-
- tabuleiro[0, 1] = 2
-
- tabuleiro[0, 2] = 3
-
-
-
- tabuleiro[1, 0] = 1
-
- tabuleiro[1, 1] = 2
-
- tabuleiro[1, 2] = 3
-
-
-
- tabuleiro[2, 0] = 1
-
- tabuleiro[2, 1] = 2
-
- tabuleiro[2, 2] = 3
-
-atualizador
+' 
+'  tabuleiro[0, 0] = 1
+' 
+'  tabuleiro[0, 1] = 2
+' 
+'  tabuleiro[0, 2] = 3
+' 
+' 
+' 
+'  tabuleiro[1, 0] = 1
+' 
+'  tabuleiro[1, 1] = 2
+' 
+'  tabuleiro[1, 2] = 3
+' 
+' 
+' 
+'  tabuleiro[2, 0] = 1
+' 
+'  tabuleiro[2, 1] = 2
+' 
+'  tabuleiro[2, 2] = 3
+' 
+' atualizador
 Print "----------------"
 Dim v As Integer
 Dim h As Integer
@@ -201,19 +204,7 @@ Public Sub atualizador()
   marcador = Sound.Load("./assets/Sounds/markttt.ogg")    ' sound check
   marcador.play
   
-
-If turn = 10
-
-simbol = "O"
-whoplayer.Text = "PLAYER 1"
-
-
-Else
-
-simbol = "X"
-whoplayer.Text = playername
-  
-  Endif
+playdef
   
 
 'bnt1.Text = tabuleiro[0, 0]
@@ -242,21 +233,29 @@ End
 
 
 Public Sub playdef()
+
+  If turn = 20 Then
+  simbol = "O"
+  botaoatual.Text = simbol
+  botaoatual.Foreground = Color.Pink
+  whoplayer.Text = "PLAYER 1"
+  Else
+ simbol = "X"
+ botaoatual.Text = simbol
+ botaoatual.Foreground = Color.Green
+ whoplayer.Text = playername
+  Endif
+  
+  If turn = 10 Then
+    turn = 20
+  Else
+    turn = 10
+    Endif
   
   
-If turn = 10 Then
-
-turn = 20
-
-Else
-
-
-turn = 10
-
-Endif
+  Print "....PLAYDEF .. " & botaoatual.Name & " TEXTO= " & botaoatual.Text
   
   
-  logica
 End
 
 Public Sub travamento()
@@ -267,202 +266,87 @@ Public Sub travamento()
   
 End
 
+Public Sub botoesclicados()
+
+  If anychampion = True Then
+    bloqueador
+  Endif
+  atualizador
+  botaoatual.Enabled = False
+End
+
 
 
 Public Sub bnt1_Click()
-  travamento
-  atualizador
-  bnt1.Text = simbol
-  tabuleiro[0, 0] = (bnt1.Text)
-  playdef
-  bnt1.Enabled = False
-  
-     
-     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
-If turn = 10
 
-bnt1.Foreground = Color.Green
-Else
-bnt1.Foreground = Color.Pink
-  Endif
-
-verificatypemode
-
+botaoatual = bnt1
+indicabotao = 1
+botoesclicados
+preencherarrayDefault
 End
 
 Public Sub bnt2_Click()
-  travamento
-  atualizador
-  bnt2.Text = simbol
-  tabuleiro[0, 1] = (bnt2.Text)
-  playdef
-  bnt2.Enabled = False
-  
-    
-     
-     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
-If turn = 10
 
-bnt2.Foreground = Color.Green
-Else
-bnt2.Foreground = Color.Pink
-  Endif
-
-
-verificatypemode
+botaoatual = bnt2
+indicabotao = 2
+botoesclicados
+preencherarrayDefault
   End
 
 Public Sub bnt3_Click()
-  travamento
-  atualizador
-  bnt3.Text = simbol
-  tabuleiro[0, 2] = (bnt3.Text)
-  playdef
-  bnt3.Enabled = False
-
-  
-     
-     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
-If turn = 10
-
-bnt3.Foreground = Color.Green
-Else
-bnt3.Foreground = Color.Pink
-  Endif
-
-
-verificatypemode
+ 
+botaoatual = bnt3
+indicabotao = 3
+botoesclicados
+preencherarrayDefault
 End
 
 Public Sub bnt4_Click()
-  travamento
-  atualizador
-  bnt4.Text = simbol
-  tabuleiro[1, 0] = (bnt4.Text)
-  playdef
-  bnt4.Enabled = False
-  
-     
-     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
-If turn = 10
-
-bnt4.Foreground = Color.Green
-Else
-bnt4.Foreground = Color.Pink
-  Endif
-
-
-verificatypemode
+ 
+botaoatual = bnt4
+indicabotao = 4
+botoesclicados
+preencherarrayDefault
 End
 
 Public Sub bnt5_Click()
-  travamento
-  atualizador
-  bnt5.Text = simbol
-  tabuleiro[1, 1] = (bnt5.Text)
-  playdef
-  bnt5.Enabled = False
-  
-     
-     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
-If turn = 10
-
-bnt5.Foreground = Color.Green
-Else
-bnt5.Foreground = Color.Pink
-  Endif
-
-
-verificatypemode
+ 
+botaoatual = bnt5
+indicabotao = 5
+botoesclicados
+preencherarrayDefault
 End
 
 Public Sub bnt6_Click()
-  travamento  
-  atualizador
-  bnt6.Text = simbol
-  tabuleiro[1, 2] = (bnt6.Text)
-  playdef
-  bnt6.Enabled = False
-  
-     
-     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
-If turn = 10
-
-bnt6.Foreground = Color.Green
-Else
-bnt6.Foreground = Color.Pink
-  Endif
-
-
-verificatypemode
+ 
+botaoatual = bnt6
+indicabotao = 6
+botoesclicados
+preencherarrayDefault
 End
 
 Public Sub bnt7_Click()
-  travamento
-  atualizador
-  bnt7.Text = simbol
-  tabuleiro[2, 0] = (bnt7.Text)
-  playdef
-  bnt7.Enabled = False
-  
-     
-     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
-If turn = 10
-
-bnt7.Foreground = Color.Green
-Else
-bnt7.Foreground = Color.Pink
-  Endif
-
-
-verificatypemode
+ 
+botaoatual = bnt7
+indicabotao = 7
+botoesclicados
+preencherarrayDefault
 End
 
 Public Sub bnt8_Click()
-  travamento
-  atualizador
-  bnt8.Text = simbol
-  tabuleiro[2, 1] = (bnt8.Text)
-  playdef
-  bnt8.Enabled = False
-  
-     
-     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
-If turn = 10
-
-bnt8.Foreground = Color.Green
-Else
-bnt8.Foreground = Color.Pink
-  Endif
-
-
-verificatypemode
+ 
+botaoatual = bnt8
+indicabotao = 8
+botoesclicados
+preencherarrayDefault
 End
 
 Public Sub bnt9_Click()
-  travamento
-  atualizador
-  bnt9.Text = simbol
-  tabuleiro[2, 2] = (bnt9.Text)
-  playdef
-  bnt9.Enabled = False
-  
-  
-     
-     ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
-If turn = 10
-
-bnt9.Foreground = Color.Green
-Else
-bnt9.Foreground = Color.Pink
-  Endif
-  
-
-verificatypemode
-End
-
-Public Sub ng_Click()
-
+ 
+botaoatual = bnt9
+indicabotao = 9
+botoesclicados
+preencherarrayDefault
 End
 
 
@@ -470,7 +354,23 @@ End
 Public Sub logica()
   logiplayer1
   logiplayer2
+  
+If anychampion = False Then
+  
+        
+  If bnt1.Text <> "" And bnt2.Text <> "" And bnt3.Text <> "" And bnt4.Text <> "" And bnt5.Text <> "" And bnt6.Text <> "" And bnt7.Text <> "" And bnt8.Text <> "" And bnt9.Text <> "" Then
+    scorep3 = scorep3 + 1
+    sco3.Text = CString(scorep3)
+    anychampion = True
+    resultV = 4
+    voiceReproducer
+    WinnerAlert.whowinner.Text = "N O B O D Y!"
+    WinnerAlert.Show
+    bloqueador
 
+  Endif
+  Endif
+  
 End
 
 Public Sub logiplayer1()
@@ -481,7 +381,8 @@ Public Sub logiplayer1()
     anychampion = True
     resultV = 1
     tocavitoria 
-    Message("PLAYER 1 WINS!")
+    WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    WinnerAlert.Show
     bloqueador
     
 Else
@@ -494,7 +395,8 @@ Else
     anychampion = True
     resultV = 1
     tocavitoria 
-    Message("PLAYER 1 WINS!")
+    WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    WinnerAlert.Show
     bloqueador
  
  Else
@@ -507,7 +409,8 @@ Else
     anychampion = True
     resultV = 1
     tocavitoria 
-    Message("PLAYER 1 WINS!")
+    WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    WinnerAlert.Show
     bloqueador
 Else
   
@@ -520,7 +423,8 @@ Else
     anychampion = True
     resultV = 1
     tocavitoria 
-    Message("PLAYER 1 WINS!")
+    WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    WinnerAlert.Show
     bloqueador
 Else
       
@@ -532,7 +436,8 @@ Else
     anychampion = True
     resultV = 1
     tocavitoria 
-    Message("PLAYER 1 WINS!")
+    WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    WinnerAlert.Show
     bloqueador
 
   Else
@@ -545,7 +450,8 @@ Else
     anychampion = True
     resultV = 1
     tocavitoria 
-    Message("PLAYER 1 WINS!")
+    WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    WinnerAlert.Show
     bloqueador
 Else
   
@@ -558,7 +464,8 @@ Else
     anychampion = True
     resultV = 1
     tocavitoria 
-    Message("PLAYER 1 WINS!")
+    WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    WinnerAlert.Show
     bloqueador
 Else
   
@@ -570,7 +477,8 @@ Else
     anychampion = True
     resultV = 1
     tocavitoria 
-    Message("PLAYER 1 WINS!")
+    WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    WinnerAlert.Show
     bloqueador
   Endif
   Endif
@@ -595,7 +503,8 @@ Public Sub logiplayer2()
     anychampion = True
     voiceDefPl2orComputer
     tocavitoria 
-    Message(playername & " WINS!")
+    WinnerAlert.whowinner.Text = playername & " WINS!"
+    WinnerAlert.Show
     bloqueador
   Else
   
@@ -607,7 +516,8 @@ Public Sub logiplayer2()
     anychampion = True
     voiceDefPl2orComputer
     tocavitoria 
-    Message(playername & " WINS!")
+    WinnerAlert.whowinner.Text = playername & " WINS!"
+    WinnerAlert.Show
     bloqueador
   Else
   
@@ -620,7 +530,8 @@ Public Sub logiplayer2()
     anychampion = True
     voiceDefPl2orComputer
     tocavitoria 
-    Message(playername & " WINS!")
+    WinnerAlert.whowinner.Text = playername & " WINS!"
+    WinnerAlert.Show
     bloqueador
   Else
   
@@ -633,7 +544,8 @@ Public Sub logiplayer2()
     anychampion = True
     voiceDefPl2orComputer
     tocavitoria 
-    Message(playername & " WINS!")
+    WinnerAlert.whowinner.Text = playername & " WINS!"
+    WinnerAlert.Show
     bloqueador
   Else
       
@@ -645,7 +557,8 @@ Public Sub logiplayer2()
     anychampion = True
     voiceDefPl2orComputer
     tocavitoria 
-    Message(playername & " WINS!")
+    WinnerAlert.whowinner.Text = playername & " WINS!"
+    WinnerAlert.Show
     bloqueador
   Else
   
@@ -656,7 +569,8 @@ Public Sub logiplayer2()
     anychampion = True
     voiceDefPl2orComputer
     tocavitoria 
-    Message(playername & " WINS!")
+    WinnerAlert.whowinner.Text = playername & " WINS!"
+    WinnerAlert.Show
     bloqueador
   Else
     
@@ -669,7 +583,8 @@ Public Sub logiplayer2()
     anychampion = True
     voiceDefPl2orComputer
     tocavitoria 
-    Message(playername & " WINS!")
+    WinnerAlert.whowinner.Text = playername & " WINS!"
+    WinnerAlert.Show
     bloqueador
   Else
     
@@ -681,28 +596,12 @@ Public Sub logiplayer2()
     anychampion = True
     voiceDefPl2orComputer
     tocavitoria 
-    Message(playername & " WINS!")
+    WinnerAlert.whowinner.Text = playername & " WINS!"
+    WinnerAlert.Show
     bloqueador
   Endif
   
 
-
-If anychampion = False Then
-  
-        
-  If bnt1.Text <> "" And bnt2.Text <> "" And bnt3.Text <> "" And bnt4.Text <> "" And bnt5.Text <> "" And bnt6.Text <> "" And bnt7.Text <> "" And bnt8.Text <> "" And bnt9.Text <> "" Then
-    scorep3 = scorep3 + 1
-    sco3.Text = CString(scorep3)
-    anychampion = True
-    resultV = 4
-    voiceReproducer
-    Message("N O B O D Y!")
-    bloqueador
-  Endif
-  
-  
-  
-Endif
 Endif
 Endif
 Endif
@@ -791,143 +690,194 @@ End
 
 
 Public Sub QuandoForComputer()
-  Dim sorteacampo As Integer
   Dim valorencontrado As Boolean
-  
+  Dim count As Integer
+   Dim marcador As Sound
+
+
   travamento
+  count = 1
   valorencontrado = False
   Wait 0.7
   Repeat 
    Randomize
- sorteacampo = Int(Rnd(1, 10))
+   sorteacampo = Int(Rnd(1, 10))
+   'Print (sorteacampo)
+   QuemEBotaoAtual
  
- Print (sorteacampo)
- 
-  If sorteacampo = 1 Then
-     If bnt1.Text = "" Then
-       bnt1.Foreground = Color.Pink
-       bnt1.Text = simbol
-       tabuleiro[0, 0] = (bnt1.Text)
-       bnt1.Enabled = False
+     If botaoatual.Text = "" Then
+       playdef
+       preencherarray
+       botaoatual.Enabled = False
        valorencontrado = True
+       Endif
+      ' Print botaoatual.Name
+       Until valorencontrado = True
        
-       Endif
-
-  Else
-    
-      
-  If sorteacampo = 2 Then
-     If bnt2.Text = "" Then
-       bnt2.Foreground = Color.Pink
-       bnt2.Text = simbol
-       tabuleiro[0, 1] = (bnt2.Text)
-       bnt2.Enabled = False
-       valorencontrado = True
-       Endif
-
-  Else
-    
-      
-  If sorteacampo = 3 Then
-     If bnt3.Text = "" Then
-       bnt3.Foreground = Color.Pink
-       bnt3.Text = simbol
-       tabuleiro[0, 2] = (bnt3.Text)
-       bnt3.Enabled = False
-       valorencontrado = True
-       Endif
-
-  Else
-    
-      
-  If sorteacampo = 4 Then
-     If bnt4.Text = "" Then
-       bnt4.Foreground = Color.Pink
-       bnt4.Text = simbol
-       tabuleiro[1, 0] = (bnt4.Text)
-       bnt4.Enabled = False
-       valorencontrado = True
-       Endif
-
-  Else
-    
-      
-  If sorteacampo = 5 Then
-     If bnt5.Text = "" Then
-       bnt5.Foreground = Color.Pink
-       bnt5.Text = simbol
-       tabuleiro[1, 1] = (bnt5.Text)
-       bnt5.Enabled = False
-       valorencontrado = True
-       Endif
-
-  Else
-    
-      
-  If sorteacampo = 6 Then
-     If bnt6.Text = "" Then
-       bnt6.Foreground = Color.Pink
-       bnt6.Text = simbol
-       tabuleiro[1, 2] = (bnt6.Text)
-       bnt6.Enabled = False
-       valorencontrado = True
-       Endif
-
-  Else
-    
-      
-  If sorteacampo = 7 Then
-     If bnt7.Text = "" Then
-       bnt7.Foreground = Color.Pink
-       bnt7.Text = simbol
-       tabuleiro[2, 0] = (bnt7.Text)
-       bnt7.Enabled = False
-       valorencontrado = True
-       Endif
-
-  Else
-    
-      
-  If sorteacampo = 8 Then
-     If bnt8.Text = "" Then
-       bnt8.Foreground = Color.Pink
-       bnt8.Text = simbol
-       tabuleiro[2, 1] = (bnt8.Text)
-       bnt8.Enabled = False
-       valorencontrado = True
-       Endif
-
-  Else
-    
-      
-  If sorteacampo = 9 Then
-     If bnt9.Text = "" Then
-       bnt9.Foreground = Color.Pink
-       bnt9.Text = simbol
-       tabuleiro[2, 2] = (bnt9.Text)
-       bnt9.Enabled = False
-       valorencontrado = True
-       Endif
-
-    Endif
-        Endif
-            Endif
-                Endif
-                    Endif
-                        Endif
-                            Endif
-                                Endif
-                                    Endif
-                                    
-                                    Until valorencontrado = True
-                                    
-    atualizador
-    playdef
+    marcador = Sound.Load("./assets/Sounds/markttt.ogg")    ' sound check
+    marcador.play
+    logica
     trava.Visible = False
     
-
     
 End
+
+Public Sub QuemEBotaoAtual()
+  
+  If sorteacampo = 1 Then
+   botaoatual = bnt1
+  Endif
+    
+  If sorteacampo = 2 Then
+   botaoatual = bnt2
+  Endif
+    
+  If sorteacampo = 3 Then
+   botaoatual = bnt3
+  Endif
+    
+  If sorteacampo = 4 Then
+   botaoatual = bnt4
+  Endif
+    
+  If sorteacampo = 5 Then
+   botaoatual = bnt5
+  Endif
+    
+  If sorteacampo = 6 Then
+   botaoatual = bnt6
+  Endif
+    
+  If sorteacampo = 7 Then
+   botaoatual = bnt7
+  Endif
+    
+  If sorteacampo = 8 Then
+   botaoatual = bnt8
+  Endif
+    
+  If sorteacampo = 9 Then
+   botaoatual = bnt9
+  Endif
+  
+End
+
+
+Public Sub preencherarray()
+  
+  
+       If sorteacampo = 1 Then
+       tabuleiro[0, 0] = (botaoatual.Text)
+       Endif
+       
+         
+       If sorteacampo = 2 Then
+       tabuleiro[0, 1] = (botaoatual.Text)
+       Endif
+       
+         
+       If sorteacampo = 3 Then
+       tabuleiro[0, 2] = (botaoatual.Text)
+       Endif
+       
+         
+       If sorteacampo = 4 Then
+       tabuleiro[1, 0] = (botaoatual.Text)
+       Endif
+       
+         
+       If sorteacampo = 5 Then
+       tabuleiro[1, 1] = (botaoatual.Text)
+       Endif
+       
+         
+       If sorteacampo = 6 Then
+       tabuleiro[1, 2] = (botaoatual.Text)
+       Endif
+       
+         
+       If sorteacampo = 7 Then
+       tabuleiro[2, 0] = (botaoatual.Text)
+       Endif
+       
+         
+       If sorteacampo = 8 Then
+       tabuleiro[2, 1] = (botaoatual.Text)
+       Endif
+       
+         
+       If sorteacampo = 9 Then
+       tabuleiro[2, 2] = (botaoatual.Text)
+       Endif
+       
+       
+  
+End
+
+
+
+Public Sub preencherarrayDefault()
+  
+  
+       If indicabotao = 1 Then
+       tabuleiro[0, 0] = (botaoatual.Text)
+       Endif
+       
+         
+       If indicabotao = 2 Then
+       tabuleiro[0, 1] = (botaoatual.Text)
+       Endif
+       
+         
+       If indicabotao = 3 Then
+       tabuleiro[0, 2] = (botaoatual.Text)
+       Endif
+       
+         
+       If indicabotao = 4 Then
+       tabuleiro[1, 0] = (botaoatual.Text)
+       Endif
+       
+         
+       If indicabotao = 5 Then
+       tabuleiro[1, 1] = (botaoatual.Text)
+       Endif
+       
+         
+       If indicabotao = 6 Then
+       tabuleiro[1, 2] = (botaoatual.Text)
+       Endif
+       
+         
+       If indicabotao = 7 Then
+       tabuleiro[2, 0] = (botaoatual.Text)
+       Endif
+       
+         
+       If indicabotao = 8 Then
+       tabuleiro[2, 1] = (botaoatual.Text)
+       Endif
+       
+         
+       If indicabotao = 9 Then
+       tabuleiro[2, 2] = (botaoatual.Text)
+       Endif
+       
+       
+       
+       
+     '  Print botaoatual.Name & "TEXTO= " & botaoatual.Text
+       
+       logica
+       If playername = "COMPUTER" Then
+       If anychampion = False Then
+          QuandoForComputer
+       Endif
+       Endif
+       
+  
+End
+
 
 
 
@@ -944,6 +894,10 @@ Public Sub Form_KeyPress()
  About.Show
 Endif
 
+  If Key.Code = 65293 Then 
+      WinnerAlert.Hide
+      ng.Enabled = True
+  Endif
 
 End
 
@@ -996,22 +950,36 @@ Public Sub voiceReproducer()
   
 End
 
+Public Sub whoisnowFunction()
+
+If whoisnow = 2 Then
+  turn = 20
+  whoplayer.Text = playername
+  If playername = "COMPUTER" Then
+  QuandoForComputer
+  Endif
+  whoisnow = 1
+  Else
+    whoplayer.Text = "PLAYER 1"
+    whoisnow = 2
+    turn = 10
+Endif
+End
+
+
 
 Public Sub ng_MouseDown()
 
-  Dim v As Integer
+Dim v As Integer
 Dim h As Integer
 Dim voice As Sound
 v = 0
 h = 0
 
 
-turn = 20
-whoplayer.Text = "PLAYER 1"
 
 voice = Sound.Load("./assets/Sounds/newG.ogg")    ' audio new game
 voice.play
-
 
 
 ' comeco Z E R A N D O V A R I A V E I S
@@ -1028,10 +996,6 @@ Repeat
    h = h + 1 
 
 Until h > 2
-
-  
-' fim Z E R A N D O V A R I A V E I S
-
 
 
 
@@ -1057,6 +1021,12 @@ bnt8.Enabled = True
 bnt9.Enabled = True
 
 anychampion = False
+
+
+  
+' fim Z E R A N D O V A R I A V E I S
+
+whoisnowFunction
 
 End
 

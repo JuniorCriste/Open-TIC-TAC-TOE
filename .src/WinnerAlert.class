@@ -1,0 +1,52 @@
+' Gambas class file
+
+
+Public Sub backtogame_MouseDown()
+
+  WinnerAlert.Hide
+  Game.ng.Enabled = True
+
+End
+
+
+Public Sub Form_KeyPress()
+
+    If Key.Code = 65470 Then 
+ About.Show
+Endif
+
+  If Key.Code = 65293 Then 
+      backtogame_MouseDown
+
+  Endif
+
+End
+
+
+Public Sub Form_Open()
+
+  Game.ng.Enabled = False
+  definecursor
+
+End
+
+Public Sub Form_Close()
+
+  backtogame_MouseDown
+
+End
+
+
+
+Public Sub definecursor()
+  
+    whowinner.Mouse = Mouse.Custom
+    whowinner.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    fndext.Mouse = Mouse.Custom
+    fndext.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+  
+    backtogame.Mouse = Mouse.Custom
+    backtogame.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+  
+  End

@@ -1,0 +1,3 @@
+*.htm linguist-detectable=false
+*.gambas linguist-detectable=true
+*.class linguist-detectable=true

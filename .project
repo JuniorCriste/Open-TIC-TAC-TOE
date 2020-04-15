@@ -2,7 +2,7 @@
 Title=Open Tic Tac Toe
 Startup=MenuG
 Icon=assets/Imgs/back_icon.png
-Version=1.0.1
+Version=1.5.0
 Component=gb.image
 Component=gb.gui
 Component=gb.form

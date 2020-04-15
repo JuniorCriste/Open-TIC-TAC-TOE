@@ -1,0 +1,26 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,89,24)
+  Icon = Picture["assets/Imgs/back_icon.png"]
+  Border = False
+  Utility = True
+  { fndext PictureBox
+    MoveScaled(-2,-2,93,31)
+    Picture = Picture["assets/Imgs/extensionback.png"]
+    Mode = PictureBox.Fill
+  }
+  { !whowinner Label
+    MoveScaled(0,0,86,24)
+    #Public = True
+    Font = Font["Geometos,+6"]
+    Foreground = &H600B60&
+    Text = ("WINNER who?")
+    Alignment = Align.Center
+  }
+  { backtogame PictureBox
+    MoveScaled(70,16,15,6)
+    Picture = Picture["assets/Imgs/ok.png"]
+    Mode = PictureBox.Contain
+  }
+}
