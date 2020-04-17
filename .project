@@ -1,8 +1,8 @@
 # Gambas Project File 3.0
 Title=Open Tic Tac Toe
 Startup=MenuG
-Icon=assets/Imgs/back_icon.png
-Version=1.5.0
+Icon=assets/Imgs/icon_v2.png
+Version=1.7.0
 Component=gb.image
 Component=gb.gui
 Component=gb.form

@@ -3,7 +3,7 @@
 { Form Form
   MoveScaled(0,0,89,70)
   Text = ("Open Tic Tac Toe")
-  Icon = Picture["assets/back_icon.png"]
+  Icon = Picture["assets/Imgs/mini_icon_v2.png"]
   Resizable = False
   { fndMoving PictureBox
     MoveScaled(0,0,49,28)

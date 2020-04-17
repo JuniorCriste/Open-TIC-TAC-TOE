@@ -3,6 +3,7 @@
 { Form Form
   MoveScaled(0,0,60,28)
   Background = &H073140&
+  Icon = Picture["assets/Imgs/mini_icon_v2.png"]
   Resizable = False
   { inf1 Label
     MoveScaled(4,1,11,5)
@@ -10,8 +11,9 @@
     Foreground = &HC0C0C0&
     Text = ("MUSIC")
   }
-  { musicop SwitchButton
+  { !musicop SwitchButton
     MoveScaled(16,1,8,4)
+    #Public = True
     Value = True
   }
   { inf2 Label
@@ -20,21 +22,25 @@
     Foreground = &HC0C0C0&
     Text = ("THEME")
   }
-  { optrack1 RadioButton
+  { !optrack1 RadioButton
     MoveScaled(4,15,14,4)
+    #Public = True
     Text = ("Galactic")
     Value = True
   }
-  { optrack2 RadioButton
+  { !optrack2 RadioButton
     MoveScaled(23,15,15,4)
+    #Public = True
     Text = ("Metropolis")
   }
-  { optrack3 RadioButton
+  { !optrack3 RadioButton
     MoveScaled(4,20,14,4)
+    #Public = True
     Text = ("Soft")
   }
-  { optrack4 RadioButton
+  { !optrack4 RadioButton
     MoveScaled(23,20,15,4)
+    #Public = True
     Text = ("Future")
   }
   { apply PictureBox

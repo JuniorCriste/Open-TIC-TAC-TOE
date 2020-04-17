@@ -58,31 +58,32 @@ Public Sub apply_MouseDown()
 
   
 If optrack1.Value = True Then
-  themeValue = "m1"
+  Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo mus1 > configApp.txt; echo MUS1 DEFINIDA; fi"
 Endif
 
 
 If optrack2.Value = True Then
-  themeValue = "m2"
+  Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo mus2 > configApp.txt; echo MUS2 DEFINIDA; fi"
 Endif
 
 
 If optrack3.Value = True Then
-  themeValue = "m3"
+  Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo mus3 > configApp.txt; echo MUS3 DEFINIDA; fi"
 Endif
 
 
 If optrack4.Value = True Then
-  themeValue = "m4"
+  Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo mus4 > configApp.txt; echo MUS4 DEFINIDA; fi"
 Endif
 
 If musicop.Value = False Then
-  themeValue = "none"
+  Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo mus0 > configApp.txt; echo MUS0 DEFINIDA; fi"
 Endif
 
+Wait 0.05
 MenuG.tocamusica
 
-Print themeValue
+'Print themeValue
 
 Settings.Hide
 

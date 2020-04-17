@@ -4,7 +4,7 @@
   MoveScaled(0,0,46,55)
   Background = &H073140&
   Text = ("Open Tic Tac Toe")
-  Icon = Picture["assets/back_icon.png"]
+  Icon = Picture["assets/Imgs/mini_icon_v2.png"]
   Resizable = False
   { op1 PictureBox
     MoveScaled(1,3,43.7143,21.4286)
@@ -35,6 +35,13 @@
     #Public = True
     Mouse = Mouse.Pointing
     Picture = Picture["assets/Imgs/sett.png"]
+    Mode = PictureBox.Contain
+  }
+  { !hist PictureBox
+    MoveScaled(39,0,3,4)
+    #Public = True
+    Mouse = Mouse.Pointing
+    Picture = Picture["assets/Imgs/hist.png"]
     Mode = PictureBox.Contain
   }
 }

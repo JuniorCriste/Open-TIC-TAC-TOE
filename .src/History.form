@@ -1,0 +1,76 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,67,46)
+  Background = &HC0C0C0&
+  Icon = Picture["assets/Imgs/mini_icon_v2.png"]
+  Resizable = False
+  { img1 PictureBox
+    MoveScaled(0,0,35,18)
+    Picture = Picture["assets/Imgs/His_pXc.png"]
+    Mode = PictureBox.Contain
+  }
+  { img2 PictureBox
+    MoveScaled(35,0,45.7143,18)
+    Picture = Picture["assets/Imgs/His_pXp.png"]
+    Mode = PictureBox.Contain
+  }
+  { img4 PictureBox
+    MoveScaled(38,24,24,15)
+    Picture = Picture["assets/Imgs/His_All.png"]
+    Mode = PictureBox.Contain
+  }
+  { !pvpc Label
+    MoveScaled(1,16,15,5)
+    #Public = True
+    Font = Font["Geometos,+6"]
+    Foreground = &H202020&
+    Text = ("0")
+    Alignment = Align.Center
+  }
+  { !pcvp Label
+    MoveScaled(16,16,16,5)
+    #Public = True
+    Font = Font["Geometos,+6"]
+    Foreground = &H202020&
+    Text = ("0")
+    Alignment = Align.Center
+  }
+  { !p1vp2 Label
+    MoveScaled(35,16,16,5)
+    #Public = True
+    Font = Font["Geometos,+6"]
+    Foreground = &H202020&
+    Text = ("0")
+    Alignment = Align.Center
+  }
+  { !p2vp1 Label
+    MoveScaled(52,16,15,5)
+    #Public = True
+    Font = Font["Geometos,+6"]
+    Foreground = &H202020&
+    Text = ("0")
+    Alignment = Align.Center
+  }
+  { !all Label
+    MoveScaled(33,39,34,7)
+    #Public = True
+    Font = Font["Geometos,+10"]
+    Foreground = &H202020&
+    Text = ("0")
+    Alignment = Align.Center
+  }
+  { !nbd Label
+    MoveScaled(7,39,18,5)
+    #Public = True
+    Font = Font["Geometos,+6"]
+    Foreground = &H202020&
+    Text = ("0")
+    Alignment = Align.Center
+  }
+  { img3 PictureBox
+    MoveScaled(9,24,19,14)
+    Picture = Picture["assets/Imgs/His_Nobody.png"]
+    Mode = PictureBox.Contain
+  }
+}

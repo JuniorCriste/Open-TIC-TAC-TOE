@@ -5,11 +5,20 @@ Public abriuSettings As Boolean
 Public trilha As Music
 Public curmouse As Cursor
 Public desmouse As Picture
+Public configuracao As String
+Public arquivotxt As String
+Public contaVtxt As String
+Public contaPtxt As String
+Public contaDtxt As String
+Public contaV2txt As String
 
 
 Public Sub Form_Open()
 
-  abriuSettings = False
+  
+  carregarConfiguracoes
+  Wait 0.05
+  Print Game.partidasjogadas
   tocamusica
  ' desmouse = Picture.Load("./assets/Imgs/cursor.png")
  ' curmouse = New Cursor(desmouse, 300, 300)
@@ -33,7 +42,11 @@ Public Sub Form_Open()
   sett.Mouse = Mouse.Custom
     sett.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
     
+  hist.Mouse = Mouse.Custom
+    hist.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
     
+    Dadoslog
+    primeiraVez
   
 End
 
@@ -77,44 +90,47 @@ End
 
 
 Public Sub tocamusica()
-
+Dim quemToca As String
 Music.Stop
 
   
-  If MenuG.abriuSettings = False Then
-    Settings.themeValue = "m1"
-  Endif
+  quemToca = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "configApp.txt"))
+  Print "quemToca -> " & quemToca
 
-  If Settings.themeValue = "m1" Then
+  If quemToca = "mus1" Then
   Music.Load("./assets/Music/track1.ogg")    ' sound check
   Music.play(-1, 0)
+  Settings.optrack1.Value = True
   Endif
   
 
   
-  If Settings.themeValue = "m2" Then
+  If quemToca = "mus2" Then
   Music.Load("./assets/Music/track2.ogg")    ' sound check
   Music.play(-1, 0)
+  Settings.optrack2.Value = True
   Endif
   
 
   
-  If Settings.themeValue = "m3" Then
+  If quemToca = "mus3" Then
   Music.Load("./assets/Music/track3.ogg")    ' sound check
   Music.play(-1, 0)
+  Settings.optrack3.Value = True
   Endif
   
 
   
-  If Settings.themeValue = "m4" Then
+  If quemToca = "mus4" Then
   Music.Load("./assets/Music/track4.ogg")    ' sound check
   Music.play(-1, 0)
+  Settings.optrack4.Value = True
   Endif
   
 
   
-  If Settings.themeValue = "none" Then
-
+  If quemToca = "mus0" Then
+    Settings.musicop.Value = False
   Endif
   
 
@@ -127,5 +143,145 @@ End
 Public Sub Form_Close()
 
   Music.Stop
+
+End
+
+
+Public Sub carregarConfiguracoes()
+  
+  configuracoesExiste
+  contaVitorias
+  contaVitoriascP2
+  contaVitoriasP2
+  contaempates
+  contaPartidas
+  contaDerrotas
+  
+  'configuracao = "TESTANDO ARQUIVO DE CONFIGURAÇÃO!"
+  'File.Save(arquivotxt, configuracao)
+  
+  
+End
+
+
+Public Sub configuracoesExiste()
+  
+  
+  arquivotxt = User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "configApp.txt" 
+  Print "- - - - -"
+  Shell "cd ~ &&  if [ -e .opentictactoe-cfg/configure ]; then  echo DIRETORIO JA EXISTE;   else echo CRIANDO DIRETORIO; mkdir .opentictactoe-cfg; cd .opentictactoe-cfg &&  mkdir configure; echo AGORA DIRETORIO JA EXISTE; fi;  cd ~ && cd .opentictactoe-cfg/configure && if [ -e configApp.txt ];  then echo ARQUIVO JA EXISTE; else touch configApp.txt; echo mus1 > configApp.txt; echo AGORA ARQUIVO JA EXISTE; fi"
+  
+    Print "- - - - -"
+
+  
+End
+
+
+Public Sub contaVitorias()
+  
+  contaVtxt = User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaV.txt" 
+  Print "- - - - -"
+  Shell "cd ~ &&  if [ -e .opentictactoe-cfg/configure ]; then  echo DIRETORIO JA EXISTE;   else echo CRIANDO DIRETORIO; mkdir .opentictactoe-cfg; cd .opentictactoe-cfg &&  mkdir configure; echo AGORA DIRETORIO JA EXISTE; fi;  cd ~ && cd .opentictactoe-cfg/configure && if [ -e contaV.txt ];  then echo ARQUIVO JA EXISTE; else touch contaV.txt; echo 0 > contaV.txt; echo AGORA ARQUIVO JA EXISTE; fi"
+  
+    Print "- - - - -"
+  
+End
+
+
+Public Sub contaVitoriascP2()
+  
+  contaVtxt = User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaVcP2.txt" 
+  Print "- - - - -"
+  Shell "cd ~ &&  if [ -e .opentictactoe-cfg/configure ]; then  echo DIRETORIO JA EXISTE;   else echo CRIANDO DIRETORIO; mkdir .opentictactoe-cfg; cd .opentictactoe-cfg &&  mkdir configure; echo AGORA DIRETORIO JA EXISTE; fi;  cd ~ && cd .opentictactoe-cfg/configure && if [ -e contaVcP2.txt ];  then echo ARQUIVO JA EXISTE; else touch contaVcP2.txt; echo 0 > contaVcP2.txt; echo AGORA ARQUIVO JA EXISTE; fi"
+  
+    Print "- - - - -"
+  
+End
+
+
+
+
+
+Public Sub contaVitoriasP2()
+  
+  contaV2txt = User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaV2.txt" 
+  Print "- - - - -"
+  Shell "cd ~ &&  if [ -e .opentictactoe-cfg/configure ]; then  echo DIRETORIO JA EXISTE;   else echo CRIANDO DIRETORIO; mkdir .opentictactoe-cfg; cd .opentictactoe-cfg &&  mkdir configure; echo AGORA DIRETORIO JA EXISTE; fi;  cd ~ && cd .opentictactoe-cfg/configure && if [ -e contaV2.txt ];  then echo ARQUIVO JA EXISTE; else touch contaV2.txt; echo 0 > contaV2.txt; echo AGORA ARQUIVO JA EXISTE; fi"
+  
+    Print "- - - - -"
+  
+End
+
+
+
+Public Sub contaPartidas()
+  
+  contaPtxt = User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaP.txt" 
+  Print "- - - - -"
+  Shell "cd ~ &&  if [ -e .opentictactoe-cfg/configure ]; then  echo DIRETORIO JA EXISTE;   else echo CRIANDO DIRETORIO; mkdir .opentictactoe-cfg; cd .opentictactoe-cfg &&  mkdir configure; echo AGORA DIRETORIO JA EXISTE; fi;  cd ~ && cd .opentictactoe-cfg/configure && if [ -e contaP.txt ];  then echo ARQUIVO JA EXISTE; else touch contaP.txt; echo 0 > contaP.txt; echo AGORA ARQUIVO JA EXISTE; fi"
+  
+    Print "- - - - -"
+  
+End
+
+
+
+Public Sub contaempates()
+  
+  contaPtxt = User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaE.txt" 
+  Print "- - - - -"
+  Shell "cd ~ &&  if [ -e .opentictactoe-cfg/configure ]; then  echo DIRETORIO JA EXISTE;   else echo CRIANDO DIRETORIO; mkdir .opentictactoe-cfg; cd .opentictactoe-cfg &&  mkdir configure; echo AGORA DIRETORIO JA EXISTE; fi;  cd ~ && cd .opentictactoe-cfg/configure && if [ -e contaE.txt ];  then echo ARQUIVO JA EXISTE; else touch contaE.txt; echo 0 > contaE.txt; echo AGORA ARQUIVO JA EXISTE; fi"
+  
+    Print "- - - - -"
+  
+End
+
+
+
+Public Sub contaDerrotas()
+  
+  contaDtxt = User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaD.txt" 
+  Print "- - - - -"
+  Shell "cd ~ &&  if [ -e .opentictactoe-cfg/configure ]; then  echo DIRETORIO JA EXISTE;   else echo CRIANDO DIRETORIO; mkdir .opentictactoe-cfg; cd .opentictactoe-cfg &&  mkdir configure; echo AGORA DIRETORIO JA EXISTE; fi;  cd ~ && cd .opentictactoe-cfg/configure && if [ -e contaD.txt ];  then echo ARQUIVO JA EXISTE; else touch contaD.txt; echo 0 > contaD.txt; echo AGORA ARQUIVO JA EXISTE; fi"
+  
+    Print "- - - - -"
+  
+End
+
+
+Public Sub Dadoslog()
+  ' Print "FAIXA: " & Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "configApp.txt"))
+  ' Print "DADOS OFICIAIS:"
+  Game.partidasganhas = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaV.txt"))
+  Game.partidasganhascP2 = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaVcP2.txt"))
+  Game.partidasperdidas = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaD.txt"))
+  Game.partidasganhasP2 = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaV2.txt"))
+  Game.partidasempatadas = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaE.txt"))
+  Game.partidasjogadas = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaP.txt"))
+' Game.partidasperdidasP2 = Game.partidasjogadas - (Game.partidasganhasP2 + Game.partidasganhas + Game.partidasperdidas)
+  
+  ' 
+  ' Print "PARTIDAS JOGADAS: " & Game.partidasjogadas
+  ' Print "VITORIAS CONTRA PC: " & Game.partidasganhas
+  ' Print "DERROTAS CONTRA PC: " & Game.partidasperdidas
+  ' Print "VITORIAS CONTRA PLAYER 2: " & Game.partidasperdidasP2
+  ' Print "DERROTAS CONTRA PLAYER 2: " & Game.partidasganhasP2
+  
+End
+
+Public Sub primeiraVez()
+  
+  If (Game.partidasjogadas = 0 And Game.partidasganhas = 0 And Game.partidasperdidas = 0) Then
+    
+  message("WELCOME!")
+  Endif
+End
+
+
+
+Public Sub hist_MouseDown()
+
+  History.carregarHistorico
+  History.Show
 
 End

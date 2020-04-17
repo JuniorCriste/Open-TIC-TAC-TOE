@@ -2,7 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,89,24)
-  Icon = Picture["assets/Imgs/back_icon.png"]
+  Icon = Picture["assets/Imgs/mini_icon_v2.png"]
   Border = False
   Utility = True
   { fndext PictureBox

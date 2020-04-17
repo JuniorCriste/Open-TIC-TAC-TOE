@@ -17,6 +17,13 @@ Public whoisnow As Integer ' If 1=Player 1 turn else=Other Player
 Public botaoatual As ToolButton
 Public sorteacampo As Integer
 Public indicabotao As Integer
+Public partidasjogadas As Integer
+Public partidasganhas As Integer
+Public partidasganhascP2 As Integer
+Public partidasganhasP2 As Integer
+Public partidasperdidas As Integer
+Public partidasperdidasP2 As Integer
+Public partidasempatadas As Integer
 
 
 
@@ -365,6 +372,7 @@ If anychampion = False Then
     resultV = 4
     voiceReproducer
     WinnerAlert.whowinner.Text = "N O B O D Y!"
+    adicionaEmpate
     WinnerAlert.Show
     bloqueador
 
@@ -382,6 +390,7 @@ Public Sub logiplayer1()
     resultV = 1
     tocavitoria 
     WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    addVitoriaContraPC
     WinnerAlert.Show
     bloqueador
     
@@ -396,6 +405,7 @@ Else
     resultV = 1
     tocavitoria 
     WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    addVitoriaContraPC
     WinnerAlert.Show
     bloqueador
  
@@ -410,6 +420,7 @@ Else
     resultV = 1
     tocavitoria 
     WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    addVitoriaContraPC
     WinnerAlert.Show
     bloqueador
 Else
@@ -424,6 +435,7 @@ Else
     resultV = 1
     tocavitoria 
     WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    addVitoriaContraPC
     WinnerAlert.Show
     bloqueador
 Else
@@ -437,6 +449,7 @@ Else
     resultV = 1
     tocavitoria 
     WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    addVitoriaContraPC
     WinnerAlert.Show
     bloqueador
 
@@ -451,6 +464,7 @@ Else
     resultV = 1
     tocavitoria 
     WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    addVitoriaContraPC
     WinnerAlert.Show
     bloqueador
 Else
@@ -465,6 +479,7 @@ Else
     resultV = 1
     tocavitoria 
     WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    addVitoriaContraPC
     WinnerAlert.Show
     bloqueador
 Else
@@ -478,6 +493,7 @@ Else
     resultV = 1
     tocavitoria 
     WinnerAlert.whowinner.Text = "PLAYER 1 WINS!"
+    addVitoriaContraPC
     WinnerAlert.Show
     bloqueador
   Endif
@@ -504,6 +520,7 @@ Public Sub logiplayer2()
     voiceDefPl2orComputer
     tocavitoria 
     WinnerAlert.whowinner.Text = playername & " WINS!"
+    addDerrotaContraPC
     WinnerAlert.Show
     bloqueador
   Else
@@ -517,6 +534,7 @@ Public Sub logiplayer2()
     voiceDefPl2orComputer
     tocavitoria 
     WinnerAlert.whowinner.Text = playername & " WINS!"
+    addDerrotaContraPC
     WinnerAlert.Show
     bloqueador
   Else
@@ -531,6 +549,7 @@ Public Sub logiplayer2()
     voiceDefPl2orComputer
     tocavitoria 
     WinnerAlert.whowinner.Text = playername & " WINS!"
+    addDerrotaContraPC
     WinnerAlert.Show
     bloqueador
   Else
@@ -545,6 +564,7 @@ Public Sub logiplayer2()
     voiceDefPl2orComputer
     tocavitoria 
     WinnerAlert.whowinner.Text = playername & " WINS!"
+    addDerrotaContraPC
     WinnerAlert.Show
     bloqueador
   Else
@@ -558,6 +578,7 @@ Public Sub logiplayer2()
     voiceDefPl2orComputer
     tocavitoria 
     WinnerAlert.whowinner.Text = playername & " WINS!"
+    addDerrotaContraPC
     WinnerAlert.Show
     bloqueador
   Else
@@ -570,6 +591,7 @@ Public Sub logiplayer2()
     voiceDefPl2orComputer
     tocavitoria 
     WinnerAlert.whowinner.Text = playername & " WINS!"
+    addDerrotaContraPC
     WinnerAlert.Show
     bloqueador
   Else
@@ -584,6 +606,7 @@ Public Sub logiplayer2()
     voiceDefPl2orComputer
     tocavitoria 
     WinnerAlert.whowinner.Text = playername & " WINS!"
+    addDerrotaContraPC
     WinnerAlert.Show
     bloqueador
   Else
@@ -597,6 +620,7 @@ Public Sub logiplayer2()
     voiceDefPl2orComputer
     tocavitoria 
     WinnerAlert.whowinner.Text = playername & " WINS!"
+    addDerrotaContraPC
     WinnerAlert.Show
     bloqueador
   Endif
@@ -626,8 +650,23 @@ bnt6.Enabled = False
 bnt7.Enabled = False
 bnt8.Enabled = False
 bnt9.Enabled = False
+atualizaPartidas
+
   
 End
+
+Public Sub atualizaPartidas()
+  
+
+  partidasjogadas = Game.partidasempatadas + Game.partidasganhas + Game.partidasganhascP2 + Game.partidasperdidas + Game.partidasganhasP2
+  Print partidasjogadas
+  Shell "cd ~ && cd .opentictactoe-cfg/configure; touch contaP.txt; echo " & partidasjogadas & " > contaP.txt"
+  
+  
+
+  
+End
+
 
 
 
@@ -660,7 +699,59 @@ If anychampion = True Then
  ' marcador = Sound.Load("./assets/Sounds/winnerRobot.ogg")    ' sound of victory
  ' marcador.play
   voiceReproducer
+  
 Endif
+  
+End
+
+
+Public Sub adicionaEmpate()
+  
+  partidasempatadas = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaE.txt")) + 1
+  Print partidasempatadas
+  Shell "cd ~ && cd .opentictactoe-cfg/configure; touch contaE.txt; echo " & partidasempatadas & " > contaE.txt"
+  
+  
+End
+
+
+
+
+Public Sub adicionaVitoria()
+  
+  partidasganhas = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaV.txt")) + 1
+  Print partidasganhas
+  Shell "cd ~ && cd .opentictactoe-cfg/configure; touch contaV.txt; echo " & partidasganhas & " > contaV.txt"
+  
+  End
+
+Public Sub adicionaVitoriaContraP2()
+  
+  partidasganhascP2 = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaVcP2.txt")) + 1
+  Print partidasganhascP2
+  Shell "cd ~ && cd .opentictactoe-cfg/configure; touch contaVcP2.txt; echo " & partidasganhascP2 & " > contaVcP2.txt"
+  
+  
+End
+
+
+
+Public Sub adicionaVitoriaP2()
+  
+  partidasganhasP2 = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaV2.txt")) + 1
+  Print partidasganhasP2
+  Shell "cd ~ && cd .opentictactoe-cfg/configure; touch contaV2.txt; echo " & partidasganhasP2 & " > contaV2.txt"
+  
+  
+End
+
+
+Public Sub adicionaDerrota()
+  
+  partidasperdidas = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "contaD.txt")) + 1
+  Print partidasperdidas
+  Shell "cd ~ && cd .opentictactoe-cfg/configure; touch contaD.txt; echo " & partidasperdidas & " > contaD.txt"
+  
   
 End
 
@@ -967,6 +1058,30 @@ Endif
 End
 
 
+Public Sub addVitoriaContraPC()
+  
+    If playername = "COMPUTER" Then
+    adicionaVitoria
+    Else
+      adicionaVitoriaContraP2
+  Endif
+  
+End
+
+
+
+Public Sub addDerrotaContraPC()
+  
+    If playername = "COMPUTER" Then
+    adicionaDerrota
+  Else
+    adicionaVitoriaP2
+    Endif
+  
+End
+
+
+
 
 Public Sub ng_MouseDown()
 
@@ -975,6 +1090,9 @@ Dim h As Integer
 Dim voice As Sound
 v = 0
 h = 0
+
+atualizaPartidas
+Print "PARTIDAS JOGADAS: " & partidasjogadas & "EMPATES: " & partidasempatadas & " | VITORIAS CONTRA O COMPUTADOR: " & partidasganhas & " | VITORIAS DO COMPUTADOR: " & partidasperdidas & " | VITORIAS DO PLAYER 2: " & partidasganhasP2 & " | VITORIAS CONTRA PLAYER 2: " & partidasganhascP2 
 
 
 

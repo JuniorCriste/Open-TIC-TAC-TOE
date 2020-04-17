@@ -4,7 +4,12 @@
 Public Sub Form_Open()
 
   
-
+    cred.Mouse = Mouse.Custom
+    cred.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    fakelink.Mouse = Mouse.Custom
+    fakelink.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
 End
 
 Public Sub fakelink_MouseDown()

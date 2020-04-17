@@ -1,0 +1,79 @@
+' Gambas class file
+
+
+Public Sub Form_Open()
+
+  MenuG.carregarConfiguracoes
+  Wait 0.5
+  MenuG.Dadoslog
+  carregarHistorico
+  
+  
+  
+
+End
+
+
+Public Sub carregarHistorico()
+  
+  Game.atualizaPartidas
+  pvpc.Text = Game.partidasganhas
+  pcvp.Text = Game.partidasperdidas
+  p1vp2.Text = Game.partidasganhascP2
+  p2vp1.Text = Game.partidasganhasP2
+  nbd.Text = Game.partidasempatadas
+  All.Text = Game.partidasjogadas
+  defineCursor
+
+End
+
+
+Public Sub Form_KeyPress()
+
+    If Key.Code = 65470 Then 
+ About.Show
+Endif
+End
+
+Public Sub defineCursor()
+  
+    img1.Mouse = Mouse.Custom
+    img1.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    img2.Mouse = Mouse.Custom
+    img2.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    img3.Mouse = Mouse.Custom
+    img3.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    img4.Mouse = Mouse.Custom
+    img4.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    pvpc.Mouse = Mouse.Custom
+    pvpc.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    p1vp2.Mouse = Mouse.Custom
+    p1vp2.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    p2vp1.Mouse = Mouse.Custom
+    p2vp1.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    nbd.Mouse = Mouse.Custom
+    nbd.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+        
+    
+    all.Mouse = Mouse.Custom
+    all.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+
+    
+    pcvp.Mouse = Mouse.Custom
+    pcvp.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+    
+    History.Mouse = Mouse.Custom
+    History.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])
+       
+
+
+  
+End
+
