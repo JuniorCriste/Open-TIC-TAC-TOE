@@ -133,10 +133,55 @@ Music.Stop
     Settings.musicop.Value = False
   Endif
   
-
+  defineback
   
 End
 
+Public Sub defineback()
+Dim whosbackground As String
+
+
+  
+  whosbackground = Trim(File.Load(User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "configBG.txt"))
+  Print "whosbackground -> " & whosbackground
+  
+  
+    If whosbackground = "BG1" Then
+  Game.fnd.Visible = True
+  Game.fnd2.Visible = False
+  Game.fnd3.Visible = False
+  Game.fnd4.Visible = False
+  Endif
+  
+
+  
+  If whosbackground = "BG2" Then
+  Game.fnd.Visible = False
+  Game.fnd2.Visible = True
+  Game.fnd3.Visible = False
+  Game.fnd4.Visible = False
+  Endif
+  
+
+  
+  If whosbackground = "BG3" Then
+  Game.fnd.Visible = False
+  Game.fnd2.Visible = False
+  Game.fnd3.Visible = True
+  Game.fnd4.Visible = False
+  Endif
+  
+
+  
+  If whosbackground = "BG4" Then
+  Game.fnd.Visible = False
+  Game.fnd2.Visible = False
+  Game.fnd3.Visible = False
+  Game.fnd4.Visible = True
+  Endif
+  
+  
+End
 
 
 
@@ -164,12 +209,20 @@ Public Sub carregarConfiguracoes()
 End
 
 
+
 Public Sub configuracoesExiste()
   
   
   arquivotxt = User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "configApp.txt" 
   Print "- - - - -"
   Shell "cd ~ &&  if [ -e .opentictactoe-cfg/configure ]; then  echo DIRETORIO JA EXISTE;   else echo CRIANDO DIRETORIO; mkdir .opentictactoe-cfg; cd .opentictactoe-cfg &&  mkdir configure; echo AGORA DIRETORIO JA EXISTE; fi;  cd ~ && cd .opentictactoe-cfg/configure && if [ -e configApp.txt ];  then echo ARQUIVO JA EXISTE; else touch configApp.txt; echo mus1 > configApp.txt; echo AGORA ARQUIVO JA EXISTE; fi"
+  
+    Print "- - - - -"
+
+  
+  arquivotxt = User.Home &/ ".opentictactoe-cfg" &/ "configure" &/ "configBG.txt" 
+  Print "- - - - -"
+  Shell "cd ~ &&  if [ -e .opentictactoe-cfg/configure ]; then  echo DIRETORIO JA EXISTE;   else echo CRIANDO DIRETORIO; mkdir .opentictactoe-cfg; cd .opentictactoe-cfg &&  mkdir configure; echo AGORA DIRETORIO JA EXISTE; fi;  cd ~ && cd .opentictactoe-cfg/configure && if [ -e configBG.txt ];  then echo ARQUIVO JA EXISTE; else touch configBG.txt; echo BG1 > configBG.txt; echo AGORA ARQUIVO JA EXISTE; fi"
   
     Print "- - - - -"
 

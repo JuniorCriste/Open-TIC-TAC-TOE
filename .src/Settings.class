@@ -59,21 +59,25 @@ Public Sub apply_MouseDown()
   
 If optrack1.Value = True Then
   Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo mus1 > configApp.txt; echo MUS1 DEFINIDA; fi"
+  Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo BG1 > configBG.txt; echo BG1  DEFINIDO; fi"
 Endif
 
 
 If optrack2.Value = True Then
   Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo mus2 > configApp.txt; echo MUS2 DEFINIDA; fi"
+  Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo BG2 > configBG.txt; echo BG2  DEFINIDO; fi"
 Endif
 
 
 If optrack3.Value = True Then
   Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo mus3 > configApp.txt; echo MUS3 DEFINIDA; fi"
+  Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo BG3 > configBG.txt; echo BG3  DEFINIDO; fi"
 Endif
 
 
 If optrack4.Value = True Then
   Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo mus4 > configApp.txt; echo MUS4 DEFINIDA; fi"
+  Shell "cd ~ && cd .opentictactoe-cfg/configure &&  echo BG4 > configBG.txt; echo BG4  DEFINIDO; fi"
 Endif
 
 If musicop.Value = False Then

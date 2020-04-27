@@ -15,6 +15,7 @@ Public objIsImpossible As Object[]
 Public resultV As Integer ' If 1=Player 1 win | if 2=Player 2 Win | if 3=Computer win | if 4=Nobody 
 Public whoisnow As Integer ' If 1=Player 1 turn else=Other Player
 Public botaoatual As ToolButton
+Public gradeatual As PictureBox
 Public sorteacampo As Integer
 Public indicabotao As Integer
 Public partidasjogadas As Integer
@@ -41,39 +42,11 @@ turn = 10
 'playdef
 anychampion = False
 definecursor
+MenuG.defineback
 voice = Sound.Load("./assets/Sounds/newG.ogg")    ' audio new game
 voice.play
-'movimenta
-
-End
 
 
-Public Sub movimenta()
-Dim count As Integer
-Dim discount As Integer
-  count = 0
-  discount = 0
-  
-  fndMoving.X = 0
-  fndMoving.Y = 0
-  Repeat
-  
-   Repeat
-    fndMoving.X = fndMoving.X - 1 ' Horizontal movement
-    fndMoving.Y = fndMoving.Y - 1 ' Vertical movement
-    count = count + 1 ' Counter
-    Wait 0.01 ' time to next frame 
-   Until count = 1100
-  
-   Repeat
-    fndMoving.X = fndMoving.X + 1 ' Horizontal movement
-    fndMoving.Y = fndMoving.Y + 1 ' Vertical movement
-    count = count - 1 ' Counter
-    Wait 0.01 ' time to next frame 
-   Until count = 0
-  
-
-  Until discount = 100 
 End
 
 
@@ -110,6 +83,15 @@ Public Sub definecursor()
     fnd.Mouse = Mouse.Custom
     fnd.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
     
+    fnd2.Mouse = Mouse.Custom
+    fnd2.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    fnd3.Mouse = Mouse.Custom
+    fnd3.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
+    fnd4.Mouse = Mouse.Custom
+    fnd4.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+    
     fndext.Mouse = Mouse.Custom
     fndext.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
     
@@ -144,7 +126,37 @@ Public Sub definecursor()
     ng.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
 
 
+        
+    blockedbutton1.Mouse = Mouse.Custom
+    blockedbutton1.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    blockedbutton2.Mouse = Mouse.Custom
+    blockedbutton2.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    blockedbutton3.Mouse = Mouse.Custom
+    blockedbutton3.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    blockedbutton4.Mouse = Mouse.Custom
+    blockedbutton4.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    blockedbutton5.Mouse = Mouse.Custom
+    blockedbutton5.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    blockedbutton6.Mouse = Mouse.Custom
+    blockedbutton6.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    blockedbutton7.Mouse = Mouse.Custom
+    blockedbutton7.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    blockedbutton8.Mouse = Mouse.Custom
+    blockedbutton8.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+        
+    blockedbutton9.Mouse = Mouse.Custom
+    blockedbutton9.Cursor = New Cursor(Picture["./assets/Imgs/cursormed2.png"])
+
+
 End
+
 
 
 
@@ -244,12 +256,12 @@ Public Sub playdef()
   If turn = 20 Then
   simbol = "O"
   botaoatual.Text = simbol
-  botaoatual.Foreground = Color.Pink
+  botaoatual.Foreground = Color.Violet
   whoplayer.Text = "PLAYER 1"
   Else
  simbol = "X"
  botaoatual.Text = simbol
- botaoatual.Foreground = Color.Green
+ botaoatual.Foreground = Color.DarkGreen
  whoplayer.Text = playername
   Endif
   
@@ -279,7 +291,7 @@ Public Sub botoesclicados()
     bloqueador
   Endif
   atualizador
-  botaoatual.Enabled = False
+  gradeatual.Visible = True
 End
 
 
@@ -287,6 +299,7 @@ End
 Public Sub bnt1_Click()
 
 botaoatual = bnt1
+gradeatual = blockedbutton1
 indicabotao = 1
 botoesclicados
 preencherarrayDefault
@@ -295,6 +308,7 @@ End
 Public Sub bnt2_Click()
 
 botaoatual = bnt2
+gradeatual = blockedbutton2
 indicabotao = 2
 botoesclicados
 preencherarrayDefault
@@ -303,6 +317,7 @@ preencherarrayDefault
 Public Sub bnt3_Click()
  
 botaoatual = bnt3
+gradeatual = blockedbutton3
 indicabotao = 3
 botoesclicados
 preencherarrayDefault
@@ -311,6 +326,7 @@ End
 Public Sub bnt4_Click()
  
 botaoatual = bnt4
+gradeatual = blockedbutton4
 indicabotao = 4
 botoesclicados
 preencherarrayDefault
@@ -319,6 +335,7 @@ End
 Public Sub bnt5_Click()
  
 botaoatual = bnt5
+gradeatual = blockedbutton5
 indicabotao = 5
 botoesclicados
 preencherarrayDefault
@@ -327,6 +344,7 @@ End
 Public Sub bnt6_Click()
  
 botaoatual = bnt6
+gradeatual = blockedbutton6
 indicabotao = 6
 botoesclicados
 preencherarrayDefault
@@ -335,6 +353,7 @@ End
 Public Sub bnt7_Click()
  
 botaoatual = bnt7
+gradeatual = blockedbutton7
 indicabotao = 7
 botoesclicados
 preencherarrayDefault
@@ -343,6 +362,7 @@ End
 Public Sub bnt8_Click()
  
 botaoatual = bnt8
+gradeatual = blockedbutton8
 indicabotao = 8
 botoesclicados
 preencherarrayDefault
@@ -351,6 +371,7 @@ End
 Public Sub bnt9_Click()
  
 botaoatual = bnt9
+gradeatual = blockedbutton9
 indicabotao = 9
 botoesclicados
 preencherarrayDefault
@@ -641,6 +662,7 @@ End
 
 Public Sub bloqueador()
 
+
 bnt1.Enabled = False
 bnt2.Enabled = False
 bnt3.Enabled = False
@@ -678,10 +700,10 @@ botaocor = New ToolButton(Me)
      ' COLOR PLAYER DEFINE - Pink to P2 and Green to P1
 If turn = 10
 
-botaocor.Foreground = Color.Green
+botaocor.Foreground = Color.DarkGreen
 Else
   
-botaocor.Foreground = Color.Pink
+botaocor.Foreground = Color.Violet
   Endif
 
 Return 
@@ -799,7 +821,7 @@ Public Sub QuandoForComputer()
      If botaoatual.Text = "" Then
        playdef
        preencherarray
-       botaoatual.Enabled = False
+       gradeatual.Visible = True
        valorencontrado = True
        Endif
       ' Print botaoatual.Name
@@ -817,38 +839,47 @@ Public Sub QuemEBotaoAtual()
   
   If sorteacampo = 1 Then
    botaoatual = bnt1
+   gradeatual = blockedbutton1
   Endif
     
   If sorteacampo = 2 Then
    botaoatual = bnt2
+   gradeatual = blockedbutton2
   Endif
     
   If sorteacampo = 3 Then
    botaoatual = bnt3
+   gradeatual = blockedbutton3
   Endif
     
   If sorteacampo = 4 Then
    botaoatual = bnt4
+   gradeatual = blockedbutton4
   Endif
     
   If sorteacampo = 5 Then
    botaoatual = bnt5
+   gradeatual = blockedbutton5
   Endif
     
   If sorteacampo = 6 Then
    botaoatual = bnt6
+   gradeatual = blockedbutton6
   Endif
     
   If sorteacampo = 7 Then
    botaoatual = bnt7
+   gradeatual = blockedbutton7
   Endif
     
   If sorteacampo = 8 Then
    botaoatual = bnt8
+   gradeatual = blockedbutton8
   Endif
     
   If sorteacampo = 9 Then
    botaoatual = bnt9
+   gradeatual = blockedbutton9
   Endif
   
 End
@@ -1082,7 +1113,6 @@ End
 
 
 
-
 Public Sub ng_MouseDown()
 
 Dim v As Integer
@@ -1138,8 +1168,19 @@ bnt7.Enabled = True
 bnt8.Enabled = True
 bnt9.Enabled = True
 
-anychampion = False
 
+blockedbutton1.Visible = False
+blockedbutton2.Visible = False
+blockedbutton3.Visible = False
+blockedbutton4.Visible = False
+blockedbutton5.Visible = False
+blockedbutton6.Visible = False
+blockedbutton7.Visible = False
+blockedbutton8.Visible = False
+blockedbutton9.Visible = False
+
+anychampion = False
+trava.Visible = False
 
   
 ' fim Z E R A N D O V A R I A V E I S
