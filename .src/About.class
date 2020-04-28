@@ -10,6 +10,9 @@ Public Sub Form_Open()
     fakelink.Mouse = Mouse.Custom
     fakelink.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
     
+    DONATE.Mouse = Mouse.Custom
+    DONATE.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
 End
 
 Public Sub fakelink_MouseDown()
@@ -19,3 +22,9 @@ Public Sub fakelink_MouseDown()
 
 End
 
+
+Public Sub DONATE_MouseDown()
+
+     Shell "firefox https://opentictactoe.informaticode.com.br/2020/04/make-donation.html"
+
+End

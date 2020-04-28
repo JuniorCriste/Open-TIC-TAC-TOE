@@ -4,6 +4,7 @@
 Public Sub backtogame_MouseDown()
 
   WinnerAlert.Hide
+  MenuG.alertDonation
   Game.ng.Enabled = True
 
 End
@@ -48,5 +49,14 @@ Public Sub definecursor()
   
     backtogame.Mouse = Mouse.Custom
     backtogame.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
+    
+    DONATE.Mouse = Mouse.Custom
+    DONATE.Cursor = New Cursor(Picture["./assets/Imgs/cursormed.png"])
   
   End
+
+Public Sub DONATE_MouseDown()
+
+   Shell "firefox https://opentictactoe.informaticode.com.br/2020/04/make-donation.html"
+
+End

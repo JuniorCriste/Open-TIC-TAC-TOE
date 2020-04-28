@@ -23,4 +23,9 @@
     Picture = Picture["assets/Imgs/ok.png"]
     Mode = PictureBox.Contain
   }
+  { DONATE PictureBox
+    MoveScaled(1,19,17,4)
+    Picture = Picture["assets/Imgs/donate.png"]
+    Mode = PictureBox.Contain
+  }
 }

@@ -45,6 +45,9 @@ Public Sub Form_Open()
   hist.Mouse = Mouse.Custom
     hist.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
     
+  info.Mouse = Mouse.Custom
+    info.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
     Dadoslog
     primeiraVez
   
@@ -326,15 +329,32 @@ Public Sub primeiraVez()
   
   If (Game.partidasjogadas = 0 And Game.partidasganhas = 0 And Game.partidasperdidas = 0) Then
     
-  message("WELCOME!")
+  Print ("PRIMEIRA VEZ!")
   Endif
 End
 
+
+Public Sub alertDonation()
+  
+  History.carregarHistorico
+    If (Game.partidasjogadas = 5) Or (Game.partidasjogadas = 100) Or (Game.partidasjogadas = 500) Then
+    
+  Print ("ALERT DONATE")
+  MakeaDonation.Show
+  Endif
+  
+End
 
 
 Public Sub hist_MouseDown()
 
   History.carregarHistorico
   History.Show
+
+End
+
+Public Sub info_MouseDown()
+
+  About.Show
 
 End

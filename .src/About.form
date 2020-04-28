@@ -1,15 +1,21 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,85.4286,57)
+  MoveScaled(0,0,86,57)
   Icon = Picture["assets/love.png"]
   Resizable = False
   { cred PictureBox
-    MoveScaled(0,0,85.7143,57.1429)
+    MoveScaled(0,0,86,57)
     Picture = Picture["assets/Imgs/creditos.png"]
+    Mode = PictureBox.Fill
   }
   { fakelink PictureBox
     MoveScaled(25,49,37,5)
     Mouse = Mouse.Pointing
+  }
+  { DONATE PictureBox
+    MoveScaled(2,51,17,4)
+    Picture = Picture["assets/Imgs/donate.png"]
+    Mode = PictureBox.Contain
   }
 }

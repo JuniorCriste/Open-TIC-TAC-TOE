@@ -159,7 +159,7 @@
     Alignment = Align.Center
   }
   { !ng PictureBox
-    MoveScaled(72,61,15,6)
+    MoveScaled(72,58,15,6)
     #Public = True
     Picture = Picture["assets/Imgs/newGame.png"]
     Mode = PictureBox.Contain
@@ -223,5 +223,9 @@
     Visible = False
     Picture = Picture["assets/Imgs/block.png"]
     Mode = PictureBox.Fill
+  }
+  { pegafocus Button
+    MoveScaled(77,12,4,3)
+    Visible = False
   }
 }

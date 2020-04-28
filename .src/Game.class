@@ -292,6 +292,8 @@ Public Sub botoesclicados()
   Endif
   atualizador
   gradeatual.Visible = True
+
+  pegafocus.SetFocus
 End
 
 

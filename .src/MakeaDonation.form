@@ -1,0 +1,22 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,42,37)
+  Background = &HE0E0E0&
+  Icon = Picture["assets/Imgs/Logo_love.png"]
+  Resizable = False
+  { DONATE PictureBox
+    MoveScaled(0,0,42,41)
+    Picture = Picture["assets/Imgs/donateBig.png"]
+    Alignment = Align.Center
+  }
+  { backtogame PictureBox
+    MoveScaled(26,30,15,6)
+    Picture = Picture["assets/Imgs/not.png"]
+    Mode = PictureBox.Contain
+  }
+  { fakelink PictureBox
+    MoveScaled(8,21,25,8)
+    Mouse = Mouse.Pointing
+  }
+}

@@ -1,0 +1,35 @@
+' Gambas class file
+
+
+Public Sub DONATE_MouseDown()
+
+     Shell "firefox https://opentictactoe.informaticode.com.br/2020/04/make-donation.html"
+
+End
+
+Public Sub Form_Open()
+
+  
+    DONATE.Mouse = Mouse.Custom
+    DONATE.Cursor = New Cursor(Picture["./assets/Imgs/cursormini2.png"])  
+    
+    backtogame.Mouse = Mouse.Custom
+    backtogame.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+    
+    fakelink.Mouse = Mouse.Custom
+    fakelink.Cursor = New Cursor(Picture["./assets/Imgs/cursormini.png"])
+
+End
+
+Public Sub backtogame_MouseDown()
+
+  MakeaDonation.Hide
+  
+
+End
+
+Public Sub fakelink_MouseDown()
+
+       Shell "firefox https://opentictactoe.informaticode.com.br/2020/04/make-donation.html"
+
+End
