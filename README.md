@@ -8,6 +8,9 @@
 
 ###### <a href="https://opentictactoe.informaticode.com.br/download">Downloads</a>
 
+###### Dependencie: gambas3 
+<pre> sudo apt-get install gambas3 </pre>
+
 ###### <a href="https://opentictactoe.informaticode.com.br/license">License</a>
 
 
