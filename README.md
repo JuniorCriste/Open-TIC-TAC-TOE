@@ -13,6 +13,7 @@
 
 ##### <a href="https://opentictactoe.informaticode.com.br/license">License</a>
 <hr />
+
 ##### NOTE: This project is coded using Gambas and ends here. New releases will be in another repository, not yet created, with code in another programming language for use also on platforms other than Linux.
 
 ##### NOTA: Este projeto é codificado usando Gambas e termina aqui. Novos lançamentos estarão em outro repositório, ainda não criado, com código em outra linguagem de programação para uso também em plataformas diferentes do Linux.
